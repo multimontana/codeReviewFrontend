@@ -1,0 +1,41 @@
+@import 'src/html/css/variables-new';
+@import 'src/html/css/media-new';
+
+:host {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  cursor: grab;
+  height: 50%;
+
+  &:active {
+    cursor: grabbing;
+  };
+  .root {
+    height: 100%;
+    overflow-x: hidden;
+    display: flex;
+  }
+  .card-row {
+    position: relative;
+    width: 225px;
+    &.single-row {
+      width: 425px;
+    }
+  }
+
+  .card-host-wrapper{
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    padding: 0 10px 15px;
+    @include birman-media {
+      padding: 0 0px 15px;
+    }
+  }
+}
+
+:host(.single-line) {
+  height: 100%;
+}

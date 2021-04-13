@@ -1,0 +1,69 @@
+@import 'src/html/css/variables-new';
+@import 'src/html/css/media-new';
+
+.online-tournament-table-container {
+  margin-bottom: 40px;
+}
+
+.online-tournament-table-wrapper {
+  max-width: 100%;
+  overflow-x: auto;
+}
+.online-tournament-table {
+  border-collapse: collapse;
+}
+
+.online-tournament-table__cell {
+  text-align: start;
+  color: #fff;
+  font: 300 15px/26px $gerbera-font;
+  padding-right: 13px;
+  white-space: nowrap;
+}
+
+.online-tournament-table__thead {
+  .online-tournament-table__cell {
+    border-bottom: 1px solid rgba(#fff, 0.1);
+    color: rgba(#fff, 0.4);
+    font: 300 15px/24px $gerbera-font;
+  }
+}
+
+.online-tournament-table__tbody {
+  .online-tournament-table__row{
+     &:first-child {
+      .online-tournament-table__cell {
+        padding-top: 6px;
+      }
+     }
+  }
+}
+
+.standings-table__button {
+  color: $brown-2;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 20px;
+  margin-top: 15px;
+  position: relative;
+  background: none;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  padding: 2px 24px 2px 0;
+
+  &::before {
+    position: absolute;
+    content: "";
+    width: 14px;
+    height: 13px;
+    top: 50%;
+    right: 2px;
+    background: url("#{$icons}/images/icons-old/arrows-down.svg") no-repeat;
+    transform: translateY(-50%);
+  }
+
+  &:hover {
+    color: $brown-2-hover;
+  }
+}

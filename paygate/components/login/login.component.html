@@ -1,0 +1,63 @@
+<svg-preloader class="icon icon_register" *ngIf="loading$ | async"></svg-preloader>
+<ng-container *ngIf="!(loading$ | async)">
+  <form [formGroup]="form" (ngSubmit)="submit()"  class="login">
+  <a class="login__close" [routerLink]="['', {outlets: {p: null}}]"
+     (click)="statisticsSignIn()"
+  ></a>
+  <div class="login__title">
+      {{'ACCOUNT.WELCOME_BACK' | translate }}
+      <div class="login__text">
+        <a [routerLink]="['', {outlets: {p: ['paygate', 'register']}}]" fragment="basic"
+           (click)="statisticsRegister()">{{'ACCOUNT.REGISTER' | translate }}</a>
+           {{ 'ACCOUNT.IF_YOU_DON_ACCOUNT' | translate }}
+           <a [routerLink]="['', { outlets: { p: ['paygate', 'reset-password'] } }]"
+           (click)="statisticsRecover()">{{'ACCOUNT.RECOVER' | translate }}</a> {{'ACCOUNT.THE_PASSWORD' | translate }}
+      </div>
+    </div>
+    <div class="login__labels">
+      <div>
+        <label class="input-text">
+          <div class="input-text__wrapper">
+              <input class="input-text__elem"
+                [class.input-text__elem--active]="!!form.controls['email'].value"
+                type="email"
+                formControlName="email" />
+              <div class="input-text__placeholder">{{ 'ACCOUNT.EMAIL' | translate }}</div>
+          </div>
+          <div *ngIf="form.controls['email'].errors && !form.controls['email'].pristine" class="input-text__error">
+              <div [hidden]="!form.controls['email'].errors['required']">{{'ACCOUNT.EMAIL_REQUIRED' | translate}}</div>
+              <div [hidden]="!form.controls['email'].errors['email']">{{'ACCOUNT.EMAIL_INVALID' | translate}}</div>
+            </div>
+        </label>
+        <label class="input-text__input">
+            <div class="input-text__wrapper">
+                <input
+                  class="input-text__elem"
+                  [class.input-text__elem--active]="!!form.controls['password'].value"
+                  type="password"
+                  formControlName="password" />
+                <div class="input-text__placeholder">{{ 'ACCOUNT.PASSWORD' | translate }}</div>
+            </div>
+            <div *ngIf="form.controls['password'].errors && !form.controls['password'].pristine"
+            class="input-text__error">
+                <div [hidden]="!form.controls['password'].errors['required']">
+                  {{ 'ACCOUNT.PASSWORD_REQUIRED' | translate }}
+                </div>
+              </div>
+          </label>
+        <div class="login__incorrect" *ngIf="loginIncorrect$ | async">
+          {{ 'ACCOUNT.INCORRECT_PASSWORD' | translate }}
+          <a [routerLink]="['../reset-password']">{{ 'ACCOUNT.RECOVER' | translate }}</a>
+          {{ 'TEXT.IT' | translate }}
+        </div>
+      </div>
+    </div>
+    <div class="login__footer">
+      <div class="login__footer-coll">
+      </div>
+      <div class="login__footer-coll">
+        <button type="submit" class="login__btn">{{'ACCOUNT.LOG_IN' | translate}}</button>
+        </div>
+    </div>
+  </form>
+</ng-container>

@@ -1,0 +1,43 @@
+export enum ActionButtonMode {
+  HIDE,
+  CREATE_ACCOUNT,
+  UPGRADE_NOW,
+  NEED_FIDE_ID_REGISTER,
+  NEED_FIDE_ID_APPROVE,
+  REGISTER,
+  LEAVE,
+  DISABLE,
+  END,
+}
+
+export enum UpdateMeEnum {
+  WAITING_FOR_NEXT_TOUR = 'WAITING_FOR_NEXT_TOUR',
+  GAME_IN_PROGRESS = 'GAME_IN_PROGRESS',
+  GAMEOVER = 'GAME_OVER',
+  TOURNAMENT_OVER = 'TOURNAMENT_OVER',
+  PLAYER_DISQUALIFIED = 'PLAYER_DISQUALIFIED'
+}
+
+export enum OnlineTournamentUnavailabilityReasonEnum {
+  SIGNUP_COUNTRY_LIMIT = 'signup_country_limit',
+  SIGNUP_NOT_OPENED_YET = 'signup_not_opened_yet',
+  SIGNUP_ALREADY_CLOSED = 'signup_already_closed',
+  TOO_MANY_PLAYERS = 'too_many_players',
+  SIGNUP_TWICE = 'signup_twice',
+  SAME_TIME_TOURNAMENT = 'same_time_tournament',
+  FIDE_PLAYERS_ONLY = 'fide_players_only',
+  RATING_TOO_LOW = 'rating_too_low',
+  RATING_TOO_HIGH = 'rating_too_high',
+}
+
+export enum TournamentLifecycleStepEnum {
+  TOUR_BOARD_CREATED = 'TOUR_BOARD_CREATED',
+  BOARD_STARTED = 'BOARD_STARTED',
+  TOUR_BOARD_SUBSCRIBED = 'TOUR_BOARD_SUBSCRIBED',
+  TOUR_GAME_STARTED = 'TOUR_GAME_STARTED',
+  PLAYER_MOVE_TURN = 'PLAYER_MOVE_TURN',
+  OPPONENT_MOVE_TURN = 'OPPONENT_MOVE_TURN',
+  TOUR_GAME_END = 'TOUR_GAME_END',
+  TOUR_GAME_ABORTED = 'TOUR_GAME_ABORTED',
+  TOUR_OVER = 'TOUR_OVER'
+}

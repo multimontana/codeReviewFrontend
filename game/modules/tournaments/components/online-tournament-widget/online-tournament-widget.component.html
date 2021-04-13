@@ -1,0 +1,115 @@
+<div class="online-tournament-widget" *ngIf="board$ | async as board">
+  <div class="online-tournament-widget__info-player">
+    <div class="player">
+      <div class="player__photo">
+        <img src="{{ blackPlayer?.avatar?.full }}" alt="photo" />
+      </div>
+      <div class="player__time">{{ widgetTimeBoard.blackTime }}</div>
+      <div class="player__info">
+        <div class="player__name">{{ blackPlayer?.full_name ? blackPlayer?.full_name : 'Anonymous' }}</div>
+        <div class="player__count">
+          <div class="player__time-mobile">{{ widgetTimeBoard.blackTime }} ∙</div>
+          <div class="player__count-wrapper" *ngIf="blackPlayer?.rating">
+            {{ blackPlayer?.rating }} <span *ngIf="blackCountry">&nbsp;∙&nbsp;&nbsp;{{ blackCountry }} </span>
+            <span *ngIf="board.status"
+              >∙
+              <ng-container *ngIf="board.status === BoardStatus.COMPLETED">
+                <ng-container [ngSwitch]="board.result">
+                  <span
+                    class="online-tournament-rounds__result online-tournament-rounds__result--bottom online-tournament-rounds__result--zero"
+                    *ngSwitchCase="BoardResult.VICTORY"
+                  >
+                    0
+                  </span>
+                  <span
+                    class="online-tournament-rounds__result online-tournament-rounds__result--bottom"
+                    *ngSwitchCase="BoardResult.DEFEAT"
+                  >
+                    1
+                  </span>
+                  <span
+                    class="online-tournament-rounds__result online-tournament-rounds__result--bottom online-tournament-rounds__result--half"
+                    *ngSwitchCase="BoardResult.DRAW"
+                  >
+                    <span>1</span><span>2</span>
+                  </span>
+                  <span
+                    class="online-tournament-rounds__result online-tournament-rounds__result--bottom online-tournament-rounds__result--zero"
+                    *ngSwitchCase="BoardResult.NOTHING"
+                  >
+                    0
+                  </span>
+                </ng-container>
+              </ng-container>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        class="player__position"
+        [class.player__position--active]="
+          (account$ | async)?.player.player_id === board?.black_id || (account$ | async)?.player.player_id === board?.white_id
+        "
+      >
+        {{ board?.tour_desk_number }}
+      </div>
+    </div>
+  </div>
+  <div class="online-tournament-widget__board">
+    <wc-chess-board
+      [board]="board$ | async"
+      [bottomPlayerColor]="bottomPlayerColor"
+      [canCompleteMove]="false"
+      [canMove]="false"
+      [moveReaction]="moveReaction$ | async"
+      [moveScore]="moveScore$ | async"
+      [position]="position$ | async"
+      [viewMode]="viewMode"
+      class="birman-chesspieces"
+    >
+    </wc-chess-board>
+    <tournament-countdown
+      class="online-tournament-widget__timer"
+      [timer]="countdownTimer$ | async"
+      *ngIf="isShowCountdown$ | async"
+      [text]="'BUTTONS.GO_TO_GAME' | translate"
+      (action)="goToBoard()"
+      [isAction]="true"
+    >
+    </tournament-countdown>
+  </div>
+  <div class="online-tournament-widget__info-player">
+    <div class="player">
+      <div class="player__photo">
+        <img src="{{ whitePlayer?.avatar?.full }}" alt="photo" />
+      </div>
+      <div class="player__time">{{ widgetTimeBoard.whiteTime }}</div>
+      <div class="player__info">
+        <div class="player__name">{{ whitePlayer?.full_name ? whitePlayer?.full_name : 'Anonymous' }}</div>
+        <div class="player__count">
+          <div class="player__time-mobile">{{ widgetTimeBoard.whiteTime }} ∙</div>
+          <div class="player__count-wrapper" *ngIf="whitePlayer?.rating">
+            {{ whitePlayer?.rating }} <span *ngIf="whiteCountry">&nbsp;∙&nbsp;&nbsp;{{ whiteCountry }} </span>
+            <span *ngIf="board.status"
+              >∙
+              <ng-container *ngIf="board.status === BoardStatus.COMPLETED">
+                <ng-container [ngSwitch]="board.result">
+                  <span class="online-tournament-rounds__result" *ngSwitchCase="BoardResult.VICTORY">1</span>
+                  <span class="online-tournament-rounds__result online-tournament-rounds__result--zero" *ngSwitchCase="BoardResult.DEFEAT">
+                    0
+                  </span>
+                  <span class="online-tournament-rounds__result online-tournament-rounds__result--half" *ngSwitchCase="BoardResult.DRAW">
+                    <span>1</span><span>2</span>
+                  </span>
+                  <span class="online-tournament-rounds__result online-tournament-rounds__result--zero" *ngSwitchCase="BoardResult.NOTHING">
+                    0
+                  </span>
+                </ng-container>
+              </ng-container>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

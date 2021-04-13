@@ -1,0 +1,21 @@
+@import 'variables';
+@import 'media';
+
+.text {
+  color: $white;
+  font: 300 18px/24px $gerbera-font;
+
+  ::ng-deep {
+    p {
+      padding-bottom: 25px;
+
+      &:last-child {
+        padding-bottom: 0;
+      }
+    }
+
+    a {
+      color: $blue;
+    }
+  }
+}

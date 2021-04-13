@@ -1,0 +1,156 @@
+<wc-base-popup needResetTumblers="true">
+  <form [formGroup]="form"(ngSubmit)="form.submit()" class="register" [class.mobile]="isMobile">
+    <div class="register__head">
+      <div class="register__title">
+        <span class="register__title-text register__title-text--width" [innerHTML]="title$ | async | translate"></span>
+      </div>
+      <div class="register__step" *ngIf="maxSteps$ | async as maxSteps">
+        <svg-arrow-left class="icon" (click)="history.back()"></svg-arrow-left>
+        <svg-arrow-left-bold class="icon icon--mobile" (click)="history.back()"></svg-arrow-left-bold>4<span style="font-size:0.5em">&nbsp;</span>/<span style="font-size:0.5em">&nbsp;</span>{{ maxSteps }}</div>
+    </div>
+
+    <div class="payment__body">
+      <div class="payment__form-wrapper">
+
+        <div class="payment__form" [shake]="form.shake$">
+          <div class="payment__form-row">
+            <label class="register-input__input"
+            [class.register-input__input--red]="form.controls['card_number'].error$ | async"
+            >
+              <div class="register-input__wrapper">
+                <input mask="0000 0000 0000 0000" class="register-input__elem"
+                  [class.register-input__elem--active]="!!form.controls['card_number'].value"
+                  type="text"
+                  paygateFormControl
+                  formControlName="card_number" />
+                  <div class="register-input__placeholder">{{ 'PAYGATE.CARD_NUMBER' | translate }}
+                    <div *ngIf="form.controls['card_number'].error$ | async" class="register-input__error">
+                      <div class="register-input__error-text">Invalid card number</div>
+                    </div>
+                  </div>
+              </div>
+
+            </label>
+          </div>
+
+          <div class="payment__form-row">
+            <div class="payment__form-col">
+              <div class="select-new-wrapper">
+                <div class="select-new"
+                     [class.select-new--red]="(form.controls['exp_month'].error$ | async) && !!form.controls['exp_month'].value">
+                  <select formControlName="exp_month" paygateFormControl>
+                    <option selected></option>
+                    <option *ngFor="let month of months" [value]="month.value">{{month.label}}</option>
+                  </select>
+                  <div class="select-new__placeholder">MM</div>
+                </div>
+                <div class="select-new-dash"></div>
+                <div class="select-new"
+                     [class.select-new--red]="(form.controls['exp_month'].error$ | async) && !!form.controls['exp_month'].value">
+                  <select formControlName="exp_year" paygateFormControl>
+                    <option selected></option>
+                    <option *ngFor="let year of years" [value]="year.value">{{year.label}}</option>
+                  </select>
+                  <div class="select-new__placeholder">{{ 'PAYGATE.YY' | translate }}</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="payment__form-col payment__form-col--width">
+              <label class="register-input__input"
+              [class.register-input__input--red]="!!(form.controls['cvc'].error$ | async) && !!form.controls['cvc'].value">
+                <div class="register-input__wrapper">
+                  <input mask="000" class="register-input__elem"
+                    [class.register-input__elem--active]="!!form.controls['cvc'].value"
+                    type="text"
+                    formControlName="cvc"
+                    paygateFormControl
+                  />
+                    <div class="register-input__placeholder">CVC
+                        <!-- <div *ngIf="controlErrors['cvc'] | async" class="register-input__error">
+                          <div>Invalid cvc</div>
+                        </div> -->
+                    </div>
+                </div>
+
+              </label>
+            </div>
+          </div>
+
+          <div class="payment__form-row">
+            <label class="register-input__input"
+              [class.register-input__input--red]="!!(form.controls['name'].error$ | async) && !!form.controls['name'].value"
+            >
+              <div class="register-input__wrapper">
+                <input
+                  class="register-input__elem register-input__elem--big"
+                  [class.register-input__elem--active]="!!form.controls['name'].value"
+                  type="text"
+                  formControlName="name"
+                  paygateFormControl
+                />
+                  <div class="register-input__placeholder">{{ 'PAYGATE.CARD_NAME' | translate }}
+                      <ng-container *ngIf="form.controls['name'].error$ | async as error">
+                        <div *ngIf="error !== 'required'" class="register-input__error">
+                          <div class="register-input__error-text">Invalid Name on card</div>
+                        </div>
+                      </ng-container>
+                  </div>
+              </div>
+
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="payment__promocode">
+        <label class="toggle-label toggle-label--small">
+          <input class="toggle-label__input" type="checkbox" (change)="togglePromocodeScreen()"
+            [checked]="isShownPromocodeScreen">
+            <div class="toggle-label__btn"></div>
+          <div class="toggle-label__content">
+            <div class="toggle-label__text">{{ 'PAYGATE.HAVE_PROMOCODE' | translate }}</div>
+          </div>
+        </label>
+        <div class="payment__promocode-input" *ngIf="isShownPromocodeScreen">
+          <label class="register-input__input" [shake]="form.controls['promocode'].shake$">
+            <div class="register-input__wrapper" [class.register-input__wrapper--error]="promocodeError">
+              <input class="register-input__elem" formControlName="promocode"
+                [class.register-input__elem--active]="!!form.controls['promocode'].value"
+                (keydown.enter)="applyPromocode($event)" type="text" />
+              <div class="register-input__placeholder">{{ 'PAYGATE.PROMO_CODE' | translate }}
+                  <div *ngIf="!!form.controls['promocode'].value && (form.controls['promocode'].error$ | async) as error" class="register-input__error">
+                    <div class="register-input__error-text">{{ error }}</div>
+                  </div>
+              </div>
+
+            </div>
+          </label>
+          <button class="btn-new btn-new--apply" (click)="applyPromocode($event)"
+            [class.accepted]="promocodeAccepted" [disabled]="promocodeAccepted">
+            <svg-applied *ngIf="promocodeAccepted" class="icon"></svg-applied>
+            <ng-container *ngIf="form.controls['promocode'].pending; else applytmpl"><svg-preloader class="icon icon_register"></svg-preloader></ng-container>
+            <ng-template #applytmpl>{{ ( promocodeAccepted ? 'PAYGATE.APPLIED' : 'PAYGATE.APPLY' ) | translate }}</ng-template>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="register__footer">
+      <div class="register__footer-coll">
+        <wc-btn-with-loading
+          [loading]="loading$ | async"
+          [disabled]="form.invalid$ | async"
+          (click)="eventDataLayer($event)"
+        >
+          {{ 'PAYGATE.CHECKOUT' | translate }}&nbsp;€&nbsp;<span *ngIf="totalPrice$ | async as totalPrice">{{ totalPrice / 100 | currency: 'EUR':'':'1.0' }}<span style="font-size:0.5em">&nbsp;</span>/<span style="font-size:0.5em">&nbsp;</span>{{ 'TIME.YEAR' | translate }}</span>
+        </wc-btn-with-loading>
+        <div class="register__text register__text--width">{{ 'PAYGATE.AUTO_RENEWAL' | translate }}</div>
+      </div>
+
+      <div class="register__footer-coll">
+        <div class="register__text register__text--small">{{ 'PAYGATE.RENEWAL_REMIND' | translate }}</div>
+      </div>
+
+    </div>
+  </form>
+</wc-base-popup>

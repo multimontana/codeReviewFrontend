@@ -1,0 +1,65 @@
+<wc-base-popup #basePopup [popupTitle]="popupTitle">
+  <form [formGroup]="form" (ngSubmit)="form.submit()" class="register">
+    <div class="register__head" *ngIf="!isEmailChangeMode">
+      <div class="register__title">
+        <span class="register__title-text">
+          Confirmation code was sent
+          <span class="register__text-nowrap"> to {{ email$ | async }}
+          </span>
+        </span>
+
+      </div>
+      <div class="register__step" *ngIf="maxSteps$ | async as maxSteps">
+        <svg-arrow-left class="icon" (click)="history.back()">
+        </svg-arrow-left><svg-arrow-left-bold class="icon icon--mobile" (click)="history.back()"></svg-arrow-left-bold>2<span style="font-size:0.5em">&nbsp;</span>/<span style="font-size:0.5em">&nbsp;</span>{{ maxSteps }}</div>
+    </div>
+    <div class="register__head" *ngIf="isEmailChangeMode">
+      <div class="register__title">
+        <span class="register__title-text">
+          Confirmation code was sent
+        </span>
+        <span class="register__text-nowrap"> to {{emailToChange}}
+        </span>
+      </div>
+    </div>
+    <div class="register__labels">
+      <label class="register-input__input" [shake]="form.shake$">
+        <div class="register-input__wrapper register-input__wrapper--code">
+          <input
+            #code
+            class="register-input__elem"
+            [class.register-input__elem--active]="!!form.controls['code'].value"
+            type="text"
+            formControlName="code"
+          />
+          <div class="register-input__placeholder register-input__placeholder--white">Code</div>
+          <div class="register-input__resend" [class.register-input__resend--opacity]="state === TimerState.COMPLETE" *ngIf="timerState$ | async as state">
+            <a (click)="onResend()" [class.active]="state === TimerState.COMPLETE">
+              <svg-resend class="icon"></svg-resend>
+              <span>Resend code
+                <ng-container *ngIf="state === TimerState.COUNT">
+                  <ng-container *ngIf="countdown$ | async as countdown">in {{ countdown }}</ng-container>
+                </ng-container>
+              </span>
+            </a>
+          </div>
+          <div *ngIf="(form.controls['code'].error$ | async) === 'invalid'" class="register-input__error">
+            <div class="register-input__error-text">
+              Invalid code. Make sure that the code matches the one we sent you or resend code
+            </div>
+          </div>
+        </div>
+      </label>
+    </div>
+    <div class="register__footer">
+      <div class="register__footer-coll">
+        <wc-btn-with-loading
+          [loading]="loading$ | async"
+          [disabled]="form.invalid$ | async"
+        >
+          Confirm
+        </wc-btn-with-loading>
+      </div>
+    </div>
+  </form>
+</wc-base-popup>

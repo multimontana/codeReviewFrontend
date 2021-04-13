@@ -1,0 +1,14 @@
+/*--------------------*/
+.register__head {
+    margin-bottom: 0;
+}
+
+.register-input__input {
+    flex: 0;
+}
+
+.register-input__error-text {
+    &:before {
+        display: none;
+    }
+}

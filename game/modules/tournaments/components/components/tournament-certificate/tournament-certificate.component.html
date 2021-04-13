@@ -1,0 +1,71 @@
+<div class="certificate" *ngIf="getTournament$ | async as tournament">
+  <div class="certificate__title">{{ 'OTHER.MY_CERTIFICATE' | translate }}</div>
+  <div class="certificate__img" *ngIf="account$ | async as acc">
+    <div class="certificate__content">
+      <div class="certificate__head">
+        <img class="certificate__fide-logo" src="assets/images/certificate-logo.svg" alt="" />
+      </div>
+      <div class="certificate__sub-title">{{ 'OTHER.TOURNAMENT_CERTIFICATE' | translate }}</div>
+
+      <!-- HTML Content -->
+
+      <div class="certificate__certifies">
+        {{ 'TEXT.THIS_CERTIFIES_THAT' | translate }}
+      </div>
+      <div class="certificate__name">
+        {{ acc?.full_name || 'Anonymous' }}
+      </div>
+
+      <div class="certificate__text">
+        {{ 'TEXT.TOOK_PART_IN_THE' | translate }} {{ tournament.title }}, <br />
+        {{ 'TEXT.ORGANISED_ON_THE_FIDE_ONLINE_ARENA' | translate }}, <br />
+        {{ 'TEXT.AND_WAS_PLACED' | translate }} {{ getMyRank$ | async }} {{ 'OTHER.OF' | translate }}
+        {{ (getPlayerCount$ | async) }}.
+      </div>
+      <div class="certificate__footer">
+        <ul class="certificate__list">
+          <li class="certificate__list-elem">
+            <span>{{ 'OTHER.EVENT' | translate }}: </span> {{ tournament.title }}
+          </li>
+          <li class="certificate__list-elem">
+            <span>{{ 'GAME.TIME_CONTROL' | translate }}: </span>
+            {{ getBoardType(tournament.time_control.board_type) | async }} {{ convertTime(tournament.time_control) }}
+          </li>
+          <li class="certificate__list-elem">
+            <span>{{ 'OTHER.ROUNDS' | translate }}: </span> {{ tournament.number_of_tours }}
+          </li>
+          <li class="certificate__list-elem">
+            <span>{{ 'OTHER.DATE' | translate }}: </span> {{ tournament.datetime_of_tournament | date: 'MMMM d, yyyy' }}
+          </li>
+        </ul>
+        <div class="certificate__qr-code">
+          <a href="https://arena.myfide.net/tournaments" class="certificate__qr-code-icon">
+            <img src="../../../../assets/images/certificate-qr-code.gif" alt="" />
+          </a>
+          <div class="certificate__qr-code-text">
+            {{ 'TEXT.THIS_CERTIFICATE_IS_GENERATED_UPON' | translate }} <br />
+            {{ 'TEXT.TOURNAMENT_ON_FIDE_ONLINE_ARENA' | translate }} <br />
+            {{ 'TEXT.AND_THE_LIST_OF_PARTICIPANTS' | translate }}.
+          </div>
+        </div>
+        <div class="certificate__signature">
+          <div class="certificate__signature-text">{{ 'PROFILE.WS' | translate }} CEO</div>
+          <div class="certificate__signature-field">
+            <img src="../../../../assets/images/certificate-signature.jpg" alt="" />
+            <!--правка-->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <img src="../../../../assets/images/certificate.jpg" alt="certificate" />
+  </div>
+  <div class="certificate__buttons">
+    <a class="certificate__btn" (click)="downloadPDF(tournament.id)">
+      <div class="certificate__btn-icon">
+        <svg-download-my-games class="icon-download"></svg-download-my-games>
+      </div>
+      <div class="certificate__btn-text">PDF</div>
+    </a>
+  </div>
+</div>

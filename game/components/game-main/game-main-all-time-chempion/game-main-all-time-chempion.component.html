@@ -1,0 +1,72 @@
+<div class="root" langClass>
+    <div class="header">
+        <div class="title">
+          {{ 'TOURNAMENTS.ALL_TIME' | translate}}
+        </div>
+    </div>
+  <div class="body" *ngIf="player$ | async as player">
+    <div class="avatar">
+      <img class="avatar__img" [src]="avatar$ | async"/>
+    </div>
+    <div class="player-info">
+        <div class="player-name">{{(profile$ | async).full_name}}</div>
+      <div class="player-details">
+        <span *ngIf="showBirthDate$ | async">
+          <ng-container *ngIf="(profile$ | async).birth_date || (profile$ | async).country">
+            <ng-container *ngIf="(profile$ | async).birth_date">
+              {{(profile$ | async).birth_date | age}}
+              {{ ((profile$ | async).birth_date) ? (getTranslation(((profile$ | async).birth_date) | age) | translate) : ''}}
+              <ng-container *ngIf="(profile$ | async).country">, </ng-container>
+            </ng-container>
+            {{(profile$ | async).country | country_code | async}}
+          </ng-container>
+        </span>
+      </div>
+    </div>
+    <div class="stat" *ngIf="stat$ | async as stat">
+
+      <div class="col">
+          <div class="item">
+              <div class="item-title">{{ 'GAME.RAPID' | translate }}</div>
+              <div class="item-spaces"></div>
+              <div class="item-value">{{player.worldchess_rapid}}</div>
+          </div>
+        <div class="item">
+          <div class="item-title">{{ 'GAME.BLITZ' | translate }}</div>
+          <div class="item-spaces"></div>
+          <div class="item-value">{{player.worldchess_blitz}}</div>
+        </div>
+        <div class="item">
+          <div class="item-title">{{ 'GAME.BULLET' | translate }}</div>
+          <div class="item-spaces"></div>
+          <div class="item-value">{{player.worldchess_bullet}}</div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="item">
+          <div class="item-title">{{ 'MESSAGES.GAMES' | translate }} <span class="desctop"> {{ 'MESSAGES.PLAYED' | translate }}</span></div>
+          <div class="item-spaces"></div>
+          <div class="item-value-stat">{{stat.total}}</div>
+        </div>
+        <div class="item">
+          <div class="item-title">{{ 'GAME.WINS' | translate }}</div>
+          <div class="item-spaces"></div>
+          <div class="item-value-percentage">{{stat.wins_percentage | number:'1.0-0'}}%</div>
+          <div class="item-value-stat">{{stat.wins}}</div>
+        </div>
+        <div class="item">
+          <div class="item-title">{{ 'GAME.DRAW_WORLD_CHESS_ONLINE' | translate }}</div>
+          <div class="item-spaces"></div>
+          <div class="item-value-percentage">{{stat.draws_percentage | number:'1.0-0'}}%</div>
+          <div class="item-value-stat">{{stat.draws}}</div>
+        </div>
+        <div class="item">
+          <div class="item-title">{{ 'GAME.LOSES' | translate }}</div>
+          <div class="item-spaces"></div>
+          <div class="item-value-percentage">{{stat.defeats_percentage | number:'1.0-0'}}%</div>
+          <div class="item-value-stat">{{stat.defeats}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

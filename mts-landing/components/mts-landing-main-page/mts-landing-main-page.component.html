@@ -1,0 +1,7 @@
+<div class="wrapper" (click)="closePopupOnOutsideClick()">
+  <div class="container">
+    <wc-mts-landing-content></wc-mts-landing-content>
+    <wc-mts-landing-footer></wc-mts-landing-footer>
+  </div>
+  <wc-mts-landing-popup *ngIf="mtsService.popupRequestType$ | async"></wc-mts-landing-popup>
+</div>

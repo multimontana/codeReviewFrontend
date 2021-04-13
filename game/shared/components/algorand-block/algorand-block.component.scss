@@ -1,0 +1,26 @@
+@import "../../../../../../html/css/variables-new";
+@import "../../../../../../html/css/media-new";
+.algorand-block {
+  background-color: $blue-new;
+  width: 150px;
+  border-radius: 3px;
+  padding: 10px;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 17px;
+  color: #fff;
+  text-align: initial;
+  margin-top: 25px;
+  @include birman-media {
+    display: none;
+  }
+}
+
+.align-with-text {
+  display: flex;
+  align-items: center;
+  svg-algorandt, div {
+    display: flex;
+    align-items: center;
+  }
+}

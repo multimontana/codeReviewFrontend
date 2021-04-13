@@ -1,0 +1,70 @@
+<div class="certificate" *ngIf="getTournament$ | async as tournament">
+  <div class="certificate__title">{{ 'OTHER.MY_CERTIFICATE' | translate }}</div>
+  <div class="certificate__img" *ngIf="account$ | async as acc">
+    <div class="certificate__content">
+      <div class="certificate__head">
+        <img class="certificate__mts-logo" src="assets/images/mts/certificate/logo-mts.png" alt="certificate">
+      </div>
+      <div class="certificate__sub-title">Сертификат Турнира</div>
+
+      <!-- HTML Content -->
+
+      <div class="certificate__certifies">
+        Данный сертификат подтверждает, что
+      </div>
+      <div class="certificate__name">
+        {{ acc?.full_name || 'Anonymous' }}
+      </div>
+
+      <div class="certificate__text">
+        принял участие в турнире МТС Weekly, организованном<br />
+        на платформе FIDE Online Arena,<br />
+        и занял {{ getMyRank$ | async }} место среди {{ (getPlayerCount$ | async) }} участников.
+      </div>
+      <div class="certificate__footer">
+        <ul class="certificate__list">
+          <li class="certificate__list-elem">
+            <span>Мероприятие: </span> {{ tournament.title }}
+          </li>
+          <li class="certificate__list-elem">
+            <span>Контроль времени: </span>
+            {{ getBoardType(tournament.time_control.board_type) | async }} {{ convertTime(tournament.time_control) }}
+          </li>
+          <li class="certificate__list-elem">
+            <span>Количество раундов: </span> {{ tournament.number_of_tours }}
+          </li>
+          <li class="certificate__list-elem">
+            <span>Дата: </span> {{ tournament.datetime_of_tournament | date: 'MMMM d, yyyy' }}
+          </li>
+        </ul>
+        <div class="certificate__qr-code">
+          <a href="https://arena.myfide.net/tournaments" class="certificate__qr-code-icon">
+            <img src="assets/images/mts/certificate/tournaments-qr-code-mts.svg" alt="" />
+          </a>
+          <div class="certificate__qr-code-text">
+            Узнать больше о турнирах МТС Weekly и других активностях<br />
+            компании МТС на платформе FIDE Online Arena можно c<br />
+            помощью QR кода.
+          </div>
+        </div>
+        <div class="certificate__signature">
+          <div class="certificate__signature-text">World Chess CEO</div>
+          <div class="certificate__signature-field">
+            <img src="assets/images/mts/certificate/signature-mts.png" alt="" />
+            <!--правка-->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <img src="assets/images/mts/certificate/certificate-mts.jpg" alt="certificate" />
+  </div>
+  <div class="certificate__buttons">
+    <a class="certificate__btn" (click)="downloadPDF(tournament.id)">
+      <div class="certificate__btn-icon">
+        <svg-download-my-games class="icon-download"></svg-download-my-games>
+      </div>
+      <div class="certificate__btn-text">PDF</div>
+    </a>
+  </div>
+</div>

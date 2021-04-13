@@ -1,0 +1,33 @@
+<div class="online-tournament-table-container">
+  <div class="online-tournament-table-wrapper" #tableWrapper wcHideScrollbar>
+    <table *ngIf="(getPlayers$ | async)?.length" class="online-tournament-table" #tableContent>
+      <thead class="online-tournament-table__thead">
+        <tr class="online-tournament-table__row">
+          <th class="online-tournament-table__cell" style="min-width: 143px;">{{ 'GAME.PLAYER' | translate }}</th>
+          <th class="online-tournament-table__cell">{{ 'PROFILE.FROM' | translate }}</th>
+          <th class="online-tournament-table__cell">{{ 'PROFILE.RATING' | translate }}</th>
+          <th class="online-tournament-table__cell" style="min-width: 65px;">{{ 'PROFILE.AGE' | translate }} ({{ 'TEXT.AGE' | translate }})</th>
+        </tr>
+      </thead>
+      <tbody class="online-tournament-table__tbody">
+        <tr *ngFor="let player of getPlayers$ | async; trackBy: trackByIndexFn;" class="online-tournament-table__row">
+          <td class="online-tournament-table__cell">{{ getPlayerName(player)}}</td>
+          <td class="online-tournament-table__cell">
+            <ng-container *ngIf="player.nationality_id">
+              {{getCountryCode(player.nationality_id) | async}}
+            </ng-container>
+            <ng-container *ngIf="!player.nationality_id">
+              —
+            </ng-container>
+          </td>
+          <td class="online-tournament-table__cell">{{ player.rating }}</td>
+          <td class="online-tournament-table__cell">{{ player?.age }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div *ngIf="(yetPlayerCount$ | async) as playerCount">
+    <button class="standings-table__button"
+    (click)="clickPagination()">{{playerCount}} more players</button>
+  </div>
+</div>

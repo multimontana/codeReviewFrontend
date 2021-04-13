@@ -1,0 +1,48 @@
+<div class="menu-new">
+  <a routerLink="/" class="logo">
+    <div class="logo__link">
+      <svg-hexagon-empty-thin class="logo__svg"></svg-hexagon-empty-thin>
+    </div>
+  </a>
+  <div class="menu-new-list-wrapper">
+    <ul class="menu-new-list" wcHideScrollbar>
+      <li class="menu-new-list__elem" *ngFor="let item of menu">
+        <ng-container *ngIf="item.mainApp">
+          <a class="menu-new-list__link"
+             routerLinkActive="menu-new-list__link--active"
+             [routerLinkActiveOptions]="{ exact: true }"
+             *ngIf="!item.blank"
+             [routerLink]="item.link"
+          >{{getItem(item.title) | async }}
+          </a>
+          <a class="menu-new-list__link"
+             routerLinkActive="menu-new-list__link--active"
+             [routerLinkActiveOptions]="{ exact: true }"
+             *ngIf="item.blank"
+             [href]="item.link"
+             target="_blank"
+          >{{getItem(item.title) | async }}
+          </a>
+        </ng-container>
+        <ng-container *ngIf="!item.mainApp">
+          <a class="menu-new-list__link"
+             routerLinkActive="menu-new-list__link--active"
+             [routerLinkActiveOptions]="{ exact: true }"
+             *ngIf="!item.blank"
+             [href]="paygateService.crossAppLink(true, item.link) | async"
+          >{{getItem(item.title) | async }}
+          </a>
+          <a class="menu-new-list__link"
+             routerLinkActive="menu-new-list__link--active"
+             [routerLinkActiveOptions]="{ exact: true }"
+             *ngIf="item.blank"
+             [href]="paygateService.crossAppLink(true, item.link) | async"
+             target="_blank"
+          >{{getItem(item.title) | async }}
+          </a>
+        </ng-container>
+      </li>
+    </ul>
+  </div>
+</div>
+<wc-side-menu [upcomingTournaments]="myUpcomingTournaments$ | async"></wc-side-menu>

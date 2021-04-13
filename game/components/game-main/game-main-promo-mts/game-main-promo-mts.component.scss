@@ -1,0 +1,130 @@
+@import "src/html/css/variables-new";
+@import "src/html/css/media-new";
+
+:host {
+  flex: 1 1 auto;
+  background-color: #000;
+}
+
+.promo-mts {
+  display: flex;
+  padding: 40px;
+
+  &__nowrap {
+    white-space: nowrap;
+  }
+
+  @include phones {
+    flex-direction: column;
+    margin: 0;
+    padding: 20px;
+  }
+
+  &__col {
+    flex: 1;
+    padding: 0 20px;
+
+    &--logo {
+      position: relative;
+      width: 100%;
+      max-width: 485px;
+      margin-right: 35px;
+      flex: 0 0 auto;
+      height: 385px;
+      background-image: url("#{$icons}/images/mts/title-block.png");
+      background-size: auto 350px;
+      background-repeat: no-repeat;
+      background-position: right 15px bottom 0;
+
+      @include phones {
+        margin-right: 0;
+        margin-bottom: 45px;
+        height: 275px;
+        background-position: left bottom;
+        background-size: auto 255px;
+      }
+
+      @include phones-small {
+        background-position: center bottom;
+      }
+    }
+
+    @include phones {
+      flex: 1 0 auto;
+      padding: 0;
+    }
+  }
+
+  &__logo {
+    position: absolute;
+    top: 0;
+    left: 20px;
+    width: 253px;
+
+    @include phones {
+      top: 20px;
+      left: 7px;
+      width: 165px;
+    }
+  }
+
+  &__title {
+    font-weight: 300;
+    font-size: 30px;
+    line-height: 36px;
+    color: #FFFFFF;
+    margin-bottom: 36px;
+
+    @include phones {
+      font-size: 22px;
+      line-height: 30px;
+      padding: 0 10px;
+    }
+  }
+
+  &__desc {
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 24px;
+    color: #FFFFFF;
+    margin-bottom: 36px;
+
+    @include phones {
+      padding: 0 10px;
+    }
+  }
+
+  &__button {
+    display: flex;
+    justify-content: flex-end;
+
+    @include phones {
+      justify-content: initial;
+    }
+
+    .btn-new {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 290px;
+      height: 40px;
+      border: 1px solid  $brown-2;
+      border-radius: 3px;
+      font: 300 22px/29px $gerbera-font;
+      background-color: transparent;
+      color: $brown-2;
+      cursor: pointer;
+
+      &:hover {
+        background-color: $brown-2-hover;
+        border: 1px solid $brown-2-hover;
+        color: #fff;
+      }
+
+      @include phones {
+        margin: 0 10px;
+        width: 100%;
+      }
+    }
+  }
+}

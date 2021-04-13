@@ -1,0 +1,247 @@
+@import 'src/html/css/variables-new';
+@import 'src/html/css/media-new';
+
+.certificate {
+  display: block;
+  width: 100%;
+  max-width: 716px;
+  padding-right: 20px;
+  margin-bottom: 41px;
+}
+
+.certificate__title {
+  font: 300 22px/30px $gerbera-font;
+  color: #fff;
+  margin-bottom: 15px;
+}
+
+.certificate__img {
+  position: relative;
+  left: 6px;
+  width: 100%;
+  border: 3px solid #111;
+  transform: rotate(-3deg);
+  margin-bottom: 20px;
+
+  &>img {
+    display: block;
+    width: 100%;
+  }
+}
+
+.certificate__content {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 97px 90px 90px 90px;
+  color: #fff;
+
+  @include birman-media {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 15%;
+  }
+
+}
+
+.certificate__head {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.certificate__mts-logo {
+  position: relative;
+  top: -1px;
+  flex: 0 0 auto;
+  width: 305px;
+
+  @include birman-media {
+    width: 32vw;
+  }
+}
+
+.certificate__logo {
+  position: relative;
+  top: -1px;
+  flex: 0 0 auto;
+  width: 16px;
+  fill: #000;
+  margin: 0 5px;
+
+  @include birman-media {
+    width: 2vw;
+  }
+
+  ::ng-deep {
+    svg {
+      display: block;
+    }
+  }
+}
+
+.certificate__sub-title {
+  text-align: center;
+  margin-bottom: 37px;
+  font: 300 15px/13px $gerbera-font;
+
+    @include birman-media {
+      font-size: 1.5vw;
+      margin-bottom: 4vw;
+      line-height: 2.1vw;
+    }
+}
+
+.certificate__certifies {
+  text-align: center;
+  font: 300 12px/13px $gerbera-font;
+  margin-bottom: 19px;
+
+  @include birman-media {
+    font-size: 1.3vw;
+    margin-bottom: 2vw;
+    line-height: 1.5vw;
+  }
+}
+
+.certificate__name {
+  font: 300 42px/18px $herr-von-muellerhoff;
+  text-align: center;
+  border-bottom: 1px solid #fff;
+  margin-bottom: 17px;
+  height: 19px;
+
+  @include birman-media {
+    font-size: 5vw;
+    line-height: 2vw;
+    margin-bottom: 1vw;
+    height: auto;
+  }
+}
+
+.certificate__text {
+  font: 300 15px/19px $gerbera-font;
+  text-align: center;
+  margin-bottom: 22px;
+
+  @include birman-media {
+    font-size: 1.6vw;
+    line-height: 2vw;
+    margin-bottom: 1vw;
+  }
+}
+
+.certificate__footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.certificate__list {
+  padding-top: 3px;
+  width: calc(100% /3);
+  flex: 1;
+  font: 300 11px/13px $gerbera-font;
+
+  @include birman-media {
+    font-size: 1vw;
+    line-height: 1.2vw;
+  }
+
+  span {
+    color: #999;
+  }
+}
+
+.certificate__qr-code {
+  width: calc(100% /3);
+  flex: 1;
+  text-align: center;
+}
+
+.certificate__qr-code-icon {
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+
+  @include birman-media {
+    width: 2.5vw;
+    height: 2.5vw;
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.certificate__qr-code-text {
+  font: 300 5px/7px $gerbera-font;
+
+  @include birman-media {
+    font-size: 0.5vw;
+    line-height: 0.6vw;
+  }
+}
+
+.certificate__signature {
+  width: calc(100% /3);
+  flex: 1;
+  text-align: right;
+}
+
+.certificate__signature-text {
+  font: 300 11px/13px $gerbera-font;
+  padding-right: 5px;
+  margin-bottom: 3px;
+
+  @include birman-media {
+    font-size: 1vw;
+    line-height: 1.1vw;
+  }
+}
+
+.certificate__signature-field {
+  text-align: right;
+
+  img {
+    position: relative;
+    right: -7px;
+    top: 6px;
+    width: 125px;
+    height: 31px;
+
+    @include birman-media {
+      width: 16vw;
+      height: auto;
+    }
+  }
+}
+
+.certificate__buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.certificate__btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: rgba(#fff, 0.4);
+  fill: #fff;
+  font: 300 14px/20px $gerbera-font;
+
+  &:hover {
+    color: $brown-2;
+    fill: $brown-2;
+  }
+}
+
+.certificate__btn-icon {
+  height: 25px;
+  width: 21px;
+  margin-bottom: 5px;
+}

@@ -1,0 +1,85 @@
+@import "src/html/css/variables-new";
+@import "src/html/css/media-new";
+
+/*-----------*/
+
+.register-input__input {
+  max-width: 350px;
+}
+
+.register__form-privacy {
+  @include phones() {
+    max-width: 260px;
+  }
+}
+
+.register-checkbox__wrapper {
+  margin-top: 10px;
+}
+
+.register-checkbox__elem {
+  margin-top: 4.5px;
+}
+
+.register-error__wrapper {
+  margin-top: 5px;
+}
+
+.register-checkbox__checkbox {
+  display: flex;
+}
+
+.register-checkbox__text {
+  margin-left: 5px;
+}
+
+.register-form__submit--margin {
+  margin-top: 20px;
+}
+
+wc-btn-with-loading {
+  min-width: 243px;
+
+  ::ng-deep {
+    .btn-new {
+      min-width: 100%;
+    }
+    
+  }
+}
+
+.register-input__elem {
+  padding: 11px 0 6px;
+}
+
+.register-input__placeholder {
+  transition: 0s;
+}
+
+.register-input__elem:focus + .register-input__placeholder {
+  display: none;
+}
+
+.register-input__elem.register-input__elem--active + .register-input__placeholder,
+.register-input__elem:focus + .register-input__placeholder {
+  top: calc(100% + 10px);
+  @include phones-small() {
+    top: 100%;
+  }
+
+  .register-input__placeholder-text {
+    display: none;
+  }
+}
+
+.register-input__error-text {
+  color: $orange-new;
+}
+
+.register-input__error-text:before {
+  display: none;
+}
+
+.toggle-label__price {
+  display: block;
+}

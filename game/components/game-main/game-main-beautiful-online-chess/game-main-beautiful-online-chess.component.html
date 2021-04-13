@@ -1,0 +1,82 @@
+<div class="online-chess">
+    <div class="online-chess__title">
+        <div class="online-chess__title-block">{{'TEXT.THE_MOST_BEAUTIFUL_ONLINE_CHESS_GAMING' | translate }}</div>
+        <span class="online-chess__title-logo-kaspersky">
+            <img class="online-chess__title-logo-kaspersky-img wide" src="../../../../../../assets/images/kaspersky-logo.svg" alt="">
+            <img class="online-chess__title-logo-kaspersky-img narrow" src="../../../../../../assets/images/kaspersky-logo-small.svg" alt="">
+        </span>
+    </div>
+    <div class="online-chess__grid">
+        <div class="online-chess__row">
+            <div class="online-chess__col">
+                <wc-game-main-board-main></wc-game-main-board-main>
+            </div>
+        </div>
+        <div class="online-chess__row">
+            <div class="online-chess__col" style="flex: 7;">
+                <wc-game-main-phones></wc-game-main-phones>
+            </div>
+            <div class="online-chess__col desktop" style="flex: 4;">
+                <wc-game-main-board-small></wc-game-main-board-small>
+            </div>
+        </div>
+        <div class="online-chess__row desktop">
+            <div class="online-chess__col" style="flex: 4;">
+                <wc-game-main-chat></wc-game-main-chat>
+            </div>
+            <div class="online-chess__col" style="flex: 7;">
+                <wc-game-main-lobby></wc-game-main-lobby>
+            </div>
+        </div>
+        <div class="online-chess__row desktop">
+            <div class="online-chess__col">
+                <wc-game-main-board-dashed></wc-game-main-board-dashed>
+            </div>
+        </div>
+        <div class="online-chess__row desktop">
+            <div class="online-chess__col">
+                <wc-game-main-board-styles></wc-game-main-board-styles>
+            </div>
+            <div class="online-chess__col">
+                <wc-game-main-cards></wc-game-main-cards>
+            </div>
+        </div>
+    </div>
+    <div class="slider mobile">
+        <div class="slider__wrapper">
+          <ngu-carousel [inputs]="carouselConfig"
+                        [dataSource]="carouselData"
+                        #carousel
+                        class="wide">
+            <ngu-item *nguCarouselDef="let data; let i = index">
+              <ng-container [ngSwitch]="data.id">
+                <ng-container *ngSwitchCase="0">
+                  <wc-game-main-board-small></wc-game-main-board-small>
+                </ng-container>
+                <ng-container *ngSwitchCase="1">
+                  <wc-game-main-chat></wc-game-main-chat>
+                </ng-container>
+                <ng-container *ngSwitchCase="2">
+                  <wc-game-main-lobby></wc-game-main-lobby>
+                </ng-container>
+                <ng-container *ngSwitchCase="3">
+                  <wc-game-main-board-dashed></wc-game-main-board-dashed>
+                </ng-container>
+                <ng-container *ngSwitchCase="4">
+                  <wc-game-main-board-styles></wc-game-main-board-styles>
+                </ng-container>
+                <ng-container *ngSwitchCase="5">
+                  <wc-game-main-cards></wc-game-main-cards>
+                </ng-container>
+              </ng-container>
+            </ngu-item>
+          </ngu-carousel>
+        </div>
+        <div class="slider__dotted" NguCarouselPoint>
+          <a *ngFor="let i of carousel.pointNumbers; let i = index; trackBy: trackByIndexFn"
+             class="slider__dot"
+             [class.slider__dot--active]="i == carousel.activePoint"
+             (click)="carousel.moveTo(i)"></a>
+        </div>
+    </div>
+</div>

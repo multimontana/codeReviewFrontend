@@ -1,0 +1,959 @@
+@import 'variables';
+@import 'media';
+
+:host {
+  flex: 1 1 auto;
+  background-color: $black-mts;
+
+  @include tablets-big-mts {
+    width: 1020px;
+    margin: 0 auto;
+  }
+
+  @include laptop-mts {
+    width: 100%;
+  }
+}
+
+.title-block {
+  &__row {
+    display: flex;
+    margin: 60px auto 25px;
+    //max-width: 1485px;
+    flex-direction: row;
+
+    @include tablets-big-mts {
+      margin: 0 0 25px;
+      padding: 0;
+    }
+
+    @include laptop-mts {
+      padding: 0 20px;
+    }
+
+    @include ipad-mts {
+      flex-direction: column;
+      padding: 0;
+      margin: 0;
+    }
+
+    @include phones-mts {
+      margin: 0;
+      padding: 0;
+    }
+
+    &--text {
+      position: relative;
+      min-height: 500px;
+      padding: 95px 335px 40px 0;
+    }
+  }
+
+  &__main {
+    margin-top: 16px;
+
+    @include tablets-big-mts {
+      margin-top: 0;
+    }
+
+    @include laptop-mts {
+      margin-top: 16px;
+    }
+
+    @include ipad-mts {
+      margin-top: 0;
+    }
+  }
+
+  &__col {
+    flex: 1;
+    padding: 0 20px;
+
+    @include tablets-big-mts {
+      flex: 1;
+      padding: 0;
+    }
+
+    @include laptop-mts {
+
+    }
+
+    @include ipad-mts {
+      flex: 1 0 auto;
+      padding: 0;
+    }
+
+    @include phones-mts {
+      flex: 1 0 auto;
+      padding: 0;
+    }
+
+    &--logo {
+      position: relative;
+      width: 100%;
+      height: 600px;
+      max-width: 710px;
+      margin-right: 35px;
+      flex: 0 0 auto;
+
+      &::before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 130px;
+        width: 520px;
+        height: 52px;
+        background-image: url("#{$icons}/images/mts/logo-mts.svg");
+        background-repeat: no-repeat;
+
+        @include tablets-big-mts {
+          width: 428px;
+          height: 43px;
+          left: 50px;
+          background-size: cover;
+        }
+
+        @include laptop-mts {
+          content: none;
+        }
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: -40px;
+        left: 0;
+        width: 819px;
+        height: 732px;
+        background-image: url("#{$icons}/images/mts/title-block-all.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+
+        @include tablets-big-mts {
+          left: -8px;
+          width: 616px;
+          height: 551px;
+        }
+
+        @include laptop-mts {
+          content: none;
+        }
+      }
+      /*
+      background-image: url("#{$icons}/title-block-all.svg");
+      background-size: auto 735px;
+      background-repeat: no-repeat;
+      background-position: left 0 top -30px;*/
+
+      @include tablets-big-mts {
+        height: 450px;
+        max-width: 530px;
+      }
+
+      @include laptop-mts {
+        background-image: url("#{$icons}/images/mts/title-block.png");
+        background-repeat: no-repeat;
+        margin-right: 65px;
+        max-width: 460px;
+        height: 410px;
+        background-position: left 60px top 55px;
+        background-size: auto 350px;
+      }
+
+      @include laptop-mts {
+
+      }
+
+      @include ipad-mts {
+        margin-right: 35px;
+        margin-bottom: 35px;
+        max-width: 485px;
+        height: 385px;
+        background-size: auto 350px;
+        background-position: right 15px bottom 0;
+      }
+
+      @include phones-mts {
+        margin-right: 0;
+        margin-bottom: 45px;
+        height: 275px;
+        background-size: auto 255px;
+        background-position: center bottom;
+      }
+    }
+  }
+
+  &__logo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 400px;
+
+    @include tablets-big-mts {
+      top: 0px;
+      left: 0px;
+      width: 300px;
+    }
+
+    @include laptop-mts {
+      top: 20px;
+      left: 7px;
+      width: 253px;
+    }
+
+    @include phones-mts {
+      width: 165px;
+      left: 20px;
+    }
+  }
+
+  &__title {
+
+    @include tablets-big-mts {
+      display: block;
+    }
+
+    @include laptop-mts {
+
+    }
+
+    @include phones-mts {
+      display: block;
+    }
+
+    ::ng-deep {
+      .title {
+        font: 300 52px/56px $gerbera-font;
+        margin-bottom: 64px;
+
+        @include tablets-big-mts {
+          font: 300 30px/36px $gerbera-font;
+          margin-bottom: 36px;
+        }
+
+        @include laptop-mts {
+
+        }
+
+        @include ipad-mts {
+          font: 300 22px/30px $gerbera-font;
+        }
+
+        @include phones-mts {
+          font: 300 22px/30px $gerbera-font;
+          margin-bottom: 36px;
+        }
+      }
+    }
+  }
+
+  &__main {
+
+    ::ng-deep {
+      .text {
+        font: 300 30px/36px $gerbera-font;
+        max-width: 900px;
+
+        @include tablets-big-mts {
+          font: 300 18px/24px $gerbera-font;
+        }
+
+        @include laptop-mts {
+
+        }
+
+        @include ipad-mts {
+          font: 300 18px/24px $gerbera-font;
+        }
+
+        @include phones-mts {
+          font: 300 18px/24px $gerbera-font;
+        }
+      }
+    }
+  }
+}
+
+.mts-weekly {
+  width: 100%;
+
+  @include tablets-big-mts {
+    flex: 1 0 auto;
+  }
+
+  @include laptop-mts {
+
+  }
+
+  @include phones-mts {
+    flex: 1;
+    padding: 0;
+  }
+
+  &__row {
+    display: flex;
+    margin: 0 auto;
+    //width: 1366px;
+
+    @include tablets-big-mts {
+      flex-direction: row;
+      padding: 0;
+    }
+
+    @include laptop-mts {
+
+    }
+
+    @include ipad-mts {
+      flex: 1;
+    }
+
+    @include phones-mts {
+      flex-direction: column;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: -225px;
+      left: -670px;
+      width: 686px;
+      height: 575px;
+      background-image: url("#{$icons}/images/mts/cubes-all.png");
+      background-repeat: no-repeat;
+      background-position: right;
+      background-size: contain;
+      transform: scale(1, -1);
+
+      @include tablets-big-mts {
+        content: none;
+      }
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      top: -300px;
+      right: -550px;
+      width: 1243px;
+      height: 1470px;
+      background-image: url("#{$icons}/images/mts/mts-weekly-all.png");
+      background-repeat: no-repeat;
+      background-position: right;
+      background-size: contain;
+
+      @include tablets-big-mts {
+        width: 615px;
+        height: 610px;
+        right: -412px;
+        top: -16px;
+      }
+
+      @include laptop-mts {
+        background-image: url("#{$icons}/images/mts/mts-weekly.png");
+        top: 20px;
+        right: -42px;
+        width: 275px;
+        height: 440px;
+      }
+
+      @include tablets-mts {
+        right: -10px;
+      }
+
+      @include ipad-mts {
+        right: -65px;
+        width: 170px;
+        height: 260px;
+        top: -20px;
+      }
+
+      @include phones-mts {
+        right: -60px;
+        width: 170px;
+        height: 260px;
+      }
+    }
+
+    &--text {
+      position: relative;
+      width: 100%;
+      padding: 60px 710px 70px 135px;
+
+      @include tablets-big-mts {
+        min-height: 250px;
+        padding: 75px 300px 15px 0;
+      }
+
+      @include laptop-mts {
+        padding: 75px 384px 50px 20px;
+        min-height: 400px;
+      }
+
+      @include ipad-mts {
+        padding: 135px 0 40px 0;
+      }
+    }
+
+    ::ng-deep {
+      .text {
+        max-width: 1050px;
+        font: 300 30px/36px $gerbera-font;
+
+        @include tablets-big-mts {
+          font: 300 18px/24px $gerbera-font;
+        }
+
+        @include laptop-mts {
+
+        }
+
+        @include ipad-mts {
+          max-width: 100%;
+          font: 300 18px/24px $gerbera-font;
+        }
+
+        @include phones-mts {
+          max-width: 100%;
+          font: 300 18px/24px $gerbera-font;
+        }
+      }
+    }
+  }
+
+  &__title {
+    display: block;
+
+    @include tablets-big-mts {
+      padding-right: 120px;
+    }
+
+    ::ng-deep {
+      .title {
+        font: 300 52px/56px $gerbera-font;
+        margin-bottom: 64px;
+
+        @include tablets-big-mts {
+          font: 300 30px/36px $gerbera-font;
+          margin-bottom: 28px;
+        }
+
+        @include ipad-mts {
+          font: 300 22px/30px $gerbera-font;
+        }
+      }
+    }
+  }
+
+  &--logo {
+    position: relative;
+    width: 485px;
+    margin-right: 37px;
+    flex: 0 0 auto;
+  }
+}
+
+.uncoming-tournament {
+  padding: 15px 0 0 135px;
+  margin: 0 auto;
+
+  @include tablets-big-mts {
+    padding: 20px 0 0;
+  }
+
+  @include laptop-mts {
+    padding: 20px 20px 0;
+  }
+
+  @include ipad-mts {
+    padding: 15px 0 0;
+  }
+
+  &__title {
+    font: 300 30px/36px $gerbera-font;
+    color: $white-mts;
+    margin-bottom: 25px;
+
+    @include tablets-big-mts {
+      font: 300 18px/24px $gerbera-font;
+    }
+  }
+
+  &__table {
+    overflow-x: auto;
+    margin: 0;
+    max-width: 1286px;
+
+    @include tablets-big-mts {
+      margin: 0;
+    }
+
+    @include phones-mts {
+      max-width: 100%;
+    }
+
+    .table {
+      background-color: $green-mts;
+      border-radius: 3px;
+      padding: 0 30px 23px;
+      font: 300 25px/50px $gerbera-font;
+      width: 100%;
+      min-width: 965px;
+
+      @include tablets-big-mts {
+        font: 300 15px/22px $gerbera-font;
+      }
+
+      @include laptop-mts {
+
+      }
+    }
+
+    .table__thead {
+      border-bottom: 1px solid $white-mts;
+      color: rgba($white-mts, 0.4);
+
+      .table__td {
+        opacity: 0.4;
+      }
+    }
+
+    .table__tr {
+      display: flex;
+      align-items: center;
+      height: 64px;
+
+      @include phones-mts {
+        height: 40px;
+      }
+    }
+
+    .table__td {
+      display: flex;
+      flex: 1 1 auto;
+      width: 20%;
+      color: white;
+    }
+
+    .table__button {
+      position: relative;
+      top: 5px;
+      text-align: center;
+      width: 190px;
+      height: 42px;
+      font: 300 17px/36px $gerbera-font;
+      border: 1px solid $white-mts;
+      color: $white-mts;
+      border-radius: 3px;
+      margin-left: auto;
+
+      @include ipad-mts {
+        font: 300 14px/22px $gerbera-font;
+        height: 32px;
+      }
+    }
+  }
+}
+
+/*mts-challenge*/
+
+.mts-challenge {
+
+  &__row {
+    display: flex;
+    margin: 0;
+
+    @include tablets-big-mts {
+      flex-direction: column;
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      top: -245px;
+      left: -455px;
+      width: 1030px;
+      height: 966px;
+      background-image: url("#{$icons}/images/mts/mts-challenge-all.png");
+      background-repeat: no-repeat;
+      background-position: left;
+      background-size: contain;
+
+      @include tablets-big-mts {
+        width: 716px;
+        height: 672px;
+        left: -490px;
+        top: -205px;
+      }
+
+      @include laptop-mts {
+        background-image: url("#{$icons}/images/mts/mts-challenge.png");
+        width: 320px;
+        height: 380px;
+        left: -42px;
+        top: 50px;
+      }
+
+      @include ipad-mts {
+        left: -10px;
+      }
+
+      @include ipad-mts {
+        top: auto;
+        bottom: 0;
+        width: 220px;
+        height: 280px;
+        left: -65px;
+      }
+    }
+
+    &--text {
+      position: relative;
+      min-height: 500px;
+      padding: 120px 135px 40px 775px;
+
+      @include tablets-big-mts {
+        padding: 60px 0 40px 340px;
+        flex-direction: row;
+        width: 100%;
+      }
+
+      @include laptop-mts {
+        padding: 70px 20px 40px 340px;
+      }
+
+      @include ipad-mts {
+        padding: 60px 0 265px;
+        flex-direction: column;
+      }
+    }
+  }
+
+  &__col {
+    flex: 1;
+    padding: 0;
+
+    @include tablets-big-mts {
+      flex: 1;
+    }
+
+    &--logo {
+      position: relative;
+      width: 485px;
+      margin-right: 37px;
+      flex: 0 0 auto;
+    }
+  }
+
+  &__title {
+    display: block;
+    margin-bottom: 25px;
+
+    ::ng-deep {
+      .title {
+        font: 300 52px/56px $gerbera-font;
+        margin-bottom: 64px;
+
+        @include tablets-big-mts {
+          font: 300 30px/36px $gerbera-font;
+          margin-bottom: 36px;
+        }
+
+        @include ipad-mts {
+          font: 300 22px/30px $gerbera-font;
+        }
+      }
+    }
+
+    @include tablets-big-mts {
+      margin-bottom: 35px;
+    }
+  }
+
+  &__text {
+    display: block;
+    margin-bottom: 50px;
+
+    @include tablets-big-mts {
+      padding: 0 24px 0 0;
+    }
+
+    ::ng-deep {
+      .text {
+        font: 300 30px/36px $gerbera-font;
+
+        @include tablets-big-mts {
+          font: 300 18px/24px $gerbera-font;
+        }
+      }
+    }
+  }
+
+  &__button {
+    display: flex;
+    justify-content: flex-end;
+
+    @include ipad-mts {
+      justify-content: center;
+    }
+
+    ::ng-deep {
+      button {
+        width: 453px;
+        height: 65px;
+        font: 300 30px/36px $gerbera-font;
+
+        @include tablets-big-mts {
+          font: 300 18px/24px $gerbera-font;
+          width: auto;
+          height: auto;
+        }
+
+        @include phones-mts {
+          display: block;
+          justify-content: flex-start;
+        }
+      }
+    }
+  }
+}
+
+.mts-open {
+
+  &__row {
+    display: flex;
+    margin: 0;
+
+    @include tablets-big-mts {
+      flex-direction: column;
+    }
+
+    &--text {
+      position: relative;
+      min-height: 500px;
+      padding: 0 705px 380px 135px;
+
+      @include tablets-big-mts {
+        padding: 65px 340px 225px 0;
+      }
+
+      @include tablets-mts {
+        padding: 65px 345px 300px 0;
+      }
+
+      @include laptop-mts {
+        padding: 75px 345px 300px 20px;
+      }
+
+      @include ipad-mts {
+        padding: 95px 0 265px;
+      }
+
+      @include phones-mts {
+        padding: 75px 0 265px;
+      }
+
+      &:after {
+        content: '';
+        position: absolute;
+        top: 90px;
+        right: -670px;
+        width: 1107px;
+        height: 1038px;
+        /*width: 329px;
+        height: 484px;*/
+        background-image: url("#{$icons}/images/mts/mts-open-all.png");
+        background-repeat: no-repeat;
+        background-position: right;
+        background-size: contain;
+
+        @include tablets-big-mts {
+          right: -515px;
+          width: 725px;
+          height: 680px;
+          top: 25px;
+        }
+
+        @include tablets-mts {
+          right: -320px;
+          width: 592px;
+          height: 556px;
+          top: 140px;
+          /*width: 329px;
+          height: 484px;-*/
+        }
+
+        @include ipad-mts {
+          background-image: url("#{$icons}/images/mts/mts-open-mobile.png");
+          width: 307px;
+          height: 343px;
+          right: auto;
+          left: -205px;
+          top: auto;
+          bottom: -160px;
+        }
+      }
+
+      &:before {
+        content: '';
+        position: absolute;
+        bottom: -290px;
+        left: -725px;
+        width: 964px;
+        height: 805px;
+        background-image: url("#{$icons}/images/mts/cubes-all.png");
+        background-repeat: no-repeat;
+        background-position: left;
+        background-size: contain;
+
+        @include tablets-big-mts {
+          width: 536px;
+          height: 447px;
+          bottom: -110px;
+          right: auto;
+          left: -400px;
+        }
+
+        @include tablets-mts {
+          width: 471px;
+          height: 393px;
+          bottom: -70px;
+          left: -250px;
+        }
+
+        @include ipad-mts {
+          transform: rotate(0deg);
+          bottom: 45px;
+          right: -300px;
+          left: auto;
+        }
+
+        @include phones-mts {
+          right: -315px;
+        }
+      }
+    }
+  }
+
+  &__col {
+    flex: 1;
+    padding: 0;
+
+    &--logo {
+      position: relative;
+      width: 485px;
+      margin-right: 37px;
+      flex: 0 0 auto;
+    }
+
+    @include ipad-mts {
+      flex: 1 0 auto;
+    }
+  }
+
+  &__title {
+    position: relative;
+    display: inline-block;
+
+    ::ng-deep {
+      .title {
+        font: 300 52px/56px $gerbera-font;
+        margin-bottom: 64px;
+
+        @include tablets-big-mts {
+          font: 300 30px/36px $gerbera-font;
+          margin-bottom: 36px;
+        }
+      }
+    }
+  }
+
+  &__text {
+    display: block;
+    margin-bottom: 65px;
+
+    @include tablets-big-mts {
+      margin-bottom: 35px;
+    }
+
+    ::ng-deep {
+      .text {
+        font: 300 30px/36px $gerbera-font;
+
+        @include tablets-big-mts {
+          font: 300 18px/24px $gerbera-font;
+        }
+      }
+    }
+  }
+
+  &__button {
+    display: flex;
+    justify-content: flex-end;
+
+    @include tablets-big-mts {
+      justify-content: flex-end;
+    }
+
+    @include laptop-mts {
+
+    }
+
+    @include ipad-mts {
+      justify-content: center;
+    }
+
+    ::ng-deep {
+      button {
+        width: 453px;
+        height: 65px;
+        font: 300 30px/36px $gerbera-font;
+
+        @include tablets-big-mts {
+          width: auto;
+          height: auto;
+          font: 300 18px/24px $gerbera-font;
+          display: block;
+          justify-content: flex-end;
+        }
+
+        @include laptop-mts {
+
+        }
+      }
+    }
+  }
+
+  &__star {
+    position: absolute;
+    top: -84px;
+    right: -153px;
+    width: 156px;
+    height: 156px;
+    transform: rotate(11deg);
+
+    &-icon {
+      width: 100%;
+      height: 100%;
+      fill: $red-mts;
+    }
+
+    &-text {
+      position: absolute;
+      width: 100%;
+      text-align: center;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font: 300 21px/22px $gerbera-font;
+      color: $white-mts;
+    }
+  }
+}
+
+.tournament-terms-list {
+  margin-bottom: 20px;
+  li {
+    margin-left: 50px;
+  }
+}

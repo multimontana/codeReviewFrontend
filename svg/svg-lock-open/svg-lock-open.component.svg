@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 21" enable-background="new 0 0 15 21" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g id="lGroup-12" transform="translate(728 234)" class="lst0">
+    <g id="lPage-1" transform="translate(18 14)" class="lst1">
+      <g id="lGroup-3" transform="translate(0 .074)">
+        <defs>
+          <filter id="lAdobe_OpacityMaskFilter" filterUnits="userSpaceOnUse" x="-746" y="-248.1" width="15"
+                  height="21">
+            <feColorMatrix values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0" />
+          </filter>
+        </defs>
+        <mask maskUnits="userSpaceOnUse" x="-746" y="-248.1" width="15" height="21" id="lmask-2_1_">
+          <g class="lst2">
+            <path id="lpath-1_1_" class="lst3" d="M-746-248.1h15v21h-15z" />
+          </g>
+        </mask>
+        <path id="lFill-1" class="lst4"
+              d="M-734.7-238.6h-7.6v-3.8c0-2.1 1.7-3.8 3.8-3.8 2.1 0 3.8 1.7 3.8 3.8v3.8zm1.9 0v-3.8c0-3.2-2.5-5.7-5.7-5.7-3.1 0-5.7 2.6-5.7 5.7v3.8h-1.9v11.5h15v-11.5h-1.7z" />
+      </g>
+      <defs>
+        <filter id="lAdobe_OpacityMaskFilter_1_" filterUnits="userSpaceOnUse" x="-739.3" y="-234.7" width="1.5"
+                height="3.9">
+          <feColorMatrix values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0" />
+        </filter>
+      </defs>
+      <mask maskUnits="userSpaceOnUse" x="-739.3" y="-234.7" width="1.5" height="3.9" id="lmask-4_1_">
+        <g class="lst5">
+          <path id="lpath-3_1_" class="lst3" d="M-746-227h15v-21h-15z" />
+        </g>
+      </mask>
+      <path id="lFill-4" class="lst6" d="M-739.3-230.8h1.6v-3.9h-1.6z" />
+    </g>
+  </g>
+  <g id="lGroup-12_1_" transform="translate(728 168)">
+    <g id="lPage-1_1_" transform="translate(18 80)">
+      <path id="lFill-1_1_" class="lst7"
+            d="M-739.3-230.8h1.5v-3.9h-1.5v3.9zm6.5-7.7v-3.8c0-3.2-2.5-5.7-5.7-5.7-3.1 0-5.6 2.5-5.7 5.6h1.9c.1-2 1.7-3.7 3.8-3.7 2.1 0 3.8 1.7 3.8 3.8v3.8H-746v11.5h15v-11.5h-1.8z" />
+      <path id="lFill-3" class="lst3" d="M-739.3-230.8h1.6v-3.9h-1.6z" />
+    </g>
+  </g>
+</svg>

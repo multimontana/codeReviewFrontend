@@ -1,0 +1,18 @@
+<div class="algorand-block">
+  <ng-container *ngIf="lang === 'ru'">
+    <ul>
+      <li>{{'ALGORAND.BEFORE-LOGO' | translate}}</li>
+      <li>{{'ALGORAND.BEFORE-LOGO-SECOND' | translate}}</li>
+      <li class="align-with-text"><svg-algorandt></svg-algorandt> <div>></div></li>
+      <li>{{'ALGORAND.AFTER-LOGO' | translate}}</li>
+    </ul>
+  </ng-container>
+  <ng-container *ngIf="lang === 'en'">
+    <ul>
+      <li>{{'ALGORAND.BEFORE-LOGO' | translate}}</li>
+      <li>{{'ALGORAND.BEFORE-LOGO-SECOND' | translate}}</li>
+      <li><svg-algorandt></svg-algorandt></li>
+      <li>{{'ALGORAND.AFTER-LOGO' | translate}}</li>
+    </ul>
+  </ng-container>
+</div>

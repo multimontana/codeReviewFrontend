@@ -1,0 +1,81 @@
+@import 'variables';
+@import 'media';
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100%;
+  overflow: hidden;
+  position: relative;
+  background-color: #000;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1980px;
+  margin:  0 auto;
+  height: 100%;
+  padding: 40px 42px;
+  flex: 1 1 auto;
+
+  @include tablets {
+    padding: 10px;
+  }
+}
+
+.main-container {
+  min-height: 100%;
+}
+
+html {
+  font-size: 16px;
+}
+html, body {
+  height: 100%;
+}
+body {
+  font-family: $gerbera-font;
+  color: $white;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.42;
+  background-color: $black;
+}
+ul {
+  margin: 0;
+  padding: 0;
+}
+ul li {
+  list-style: none;
+}
+button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  outline: none;
+}
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-weight: normal;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+p {
+  margin: 0;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+svg {
+  display: block;
+}
+* {
+  box-sizing: border-box;
+}

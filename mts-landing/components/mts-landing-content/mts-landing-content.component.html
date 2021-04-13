@@ -1,0 +1,214 @@
+<div class="main-page">
+  <section class="title-block">
+    <div class="title-block__row">
+      <div class="title-block__col title-block__col--logo">
+        <svg-logo-mts class="title-block__logo"></svg-logo-mts>
+      </div>
+      <div class="title-block__col">
+        <div class="title-block__main">
+          <wc-mts-landing-title class="title-block__title">
+            МТС – официальный партнер шахматного <span class="title__nowrap">онлайн-гейминга</span> в России
+          </wc-mts-landing-title>
+          <wc-mts-landing-text>
+            <p>
+              Шахматная гейминг-платформа FIDE Online Arena позволяет играть на официальный FIDE Online
+              Arena рейтинг и претендовать на онлайн-титулы FIDE Online Arena: Arena Grandmaster, Arena
+              International master, Arena FIDE master, Arena Candidate master.
+            </p>
+          </wc-mts-landing-text>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="mts-weekly">
+    <div class="mts-weekly__row mts-weekly__row--text">
+      <div class="mts-weekly__col">
+        <wc-mts-landing-title class="mts-weekly__title">МТС Марафон</wc-mts-landing-title>
+        <wc-mts-landing-text>
+          <p>
+              МТС Марафон — это серия последовательных блиц-турниров, которые прошли 27 августа. Игроки,
+              занявшие первые места в каждом турнире, выиграли стильные шахматы, лимитированный мерч и пауэрбанк.
+              Лучшему игроку по итогам всей серии MTC Марафон достался главный приз — плакат с подписью Магнуса Карлсена.
+          </p>
+          <p>
+            Посмотреть полные условия проведения конкурса можно <a target="_blank" href="/assets/docs/mts-marathon.pdf">здесь</a>.
+          </p>
+        </wc-mts-landing-text>
+      </div>
+    </div>
+  </section>
+
+  <section class="uncoming-tournament">
+    <div class="uncoming-tournament__title">
+      Прошедшие турниры
+    </div>
+    <div class="uncoming-tournament__table">
+      <div class="table">
+        <div class="table__thead">
+          <div class="table__tr">
+            <div class="table__td">
+              Время
+            </div>
+            <div class="table__td">
+              Рейтинг
+            </div>
+            <div class="table__td">
+              Тайм-контроль
+            </div>
+            <div class="table__td">
+              Название
+            </div>
+            <div class="table__td"></div>
+          </div>
+        </div>
+        <div class="table__tbody">
+          <div class="table__tr" *ngFor="let tournament of marathonTournamentList">
+            <div class="table__td">
+              {{tournament.time}}
+            </div>
+            <div class="table__td">
+              {{tournament.rating}}
+            </div>
+            <div class="table__td">
+              {{tournament.timecontrol}}
+            </div>
+            <div class="table__td">
+              {{tournament.name}}
+            </div>
+            <div class="table__td">
+              <button class="table__button" *ngIf="tournament.tournamentLink" (click)="goToTournament(tournament.tournamentLink)">
+                Смотреть результаты
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="mts-weekly">
+    <div class="mts-weekly__row mts-weekly__row--text">
+      <div class="mts-weekly__col">
+        <wc-mts-landing-title class="mts-weekly__title">МТС Weekly</wc-mts-landing-title>
+        <wc-mts-landing-text>
+          <p>
+            В сентябре завершилась серия турниров МТС Weekly.
+            В каждом турнире участники, занявшие первые три места, получали эксклюзивный мерч,
+            стильные наборы шахмат и подписки на цифровые сервисы экосистемы МТС. А лучшему игроку всей серии МТС Weekly достался главный приз — индивидуальные занятия с тренером сборной России Владимиром Поткиным.
+          </p>
+<!--          <p>-->
+<!--            Участие в турнирах возможно после прохождения регистрации на платформе. Посмотреть полные условия проведения-->
+<!--            конкурса можно <a target="_blank" href="/assets/docs/mts-weekly-rules.pdf">здесь</a>.-->
+<!--          </p>-->
+        </wc-mts-landing-text>
+      </div>
+    </div>
+  </section>
+
+  <section class="uncoming-tournament">
+    <div class="uncoming-tournament__title">
+      Прошедшие турниры
+    </div>
+    <div class="uncoming-tournament__table">
+      <div class="table">
+        <div class="table__thead">
+          <div class="table__tr">
+            <div class="table__td">
+              Дата
+            </div>
+            <div class="table__td">
+              Рейтинг
+            </div>
+            <div class="table__td">
+              Время
+            </div>
+            <div class="table__td">
+              Название
+            </div>
+            <div class="table__td"></div>
+          </div>
+        </div>
+        <div class="table__tbody">
+          <div class="table__tr" *ngFor="let tournament of tournamentList">
+            <div class="table__td">
+              {{tournament.date}}
+            </div>
+            <div class="table__td">
+              {{tournament.rating}}
+            </div>
+            <div class="table__td">
+              {{tournament.timecontrol}}
+            </div>
+            <div class="table__td">
+              {{tournament.name}}
+            </div>
+            <div class="table__td">
+              <button class="table__button" *ngIf="tournament.tournamentLink" (click)="goToTournament(tournament.tournamentLink)">
+                Смотреть результаты
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="mts-challenge">
+    <div class="mts-challenge__row mts-challenge__row--text">
+      <div class="mts-challenge__col">
+        <wc-mts-landing-title class="mts-challenge__title">МТС Challenge</wc-mts-landing-title>
+        <wc-mts-landing-text class="mts-challenge__text">
+          <p>
+            МТС поддерживает талантливых игроков и предоставляет возможность выиграть бесплатную годовую подписку World
+            Chess Pro, что дает право при хорошей игре претендовать на получение официальных онлайн-званий FIDE Online Arena: Arena
+            Grandmaster, Arena International master, Arena FIDE master, Arena Candidate master.
+          </p>
+          <p>Условия:</p>
+          <ul class="tournament-terms-list">
+            <li style="list-style-type: disc;">сыграй больше 20 блиц-партий</li>
+            <li style="list-style-type: disc;">прими участие в двух и более турнирах МТС</li>
+            <li style="list-style-type: disc;">набери в течение двух месяцев минимум 50 баллов к своему рейтингу</li>
+          </ul>
+          <p>
+            Чтобы участвовать в акции, твой рейтинг в блице должен быть в диапазоне 1200-1800.
+          </p>
+          <p>
+            Посмотреть полные условия проведения конкурса можно <a target="_blank" href="/assets/docs/mts-challenge.pdf">здесь</a>.
+          </p>
+        </wc-mts-landing-text>
+        <div class="mts-challenge__button">
+          <wc-mts-landing-button (click)="openPopup(MtsRequestType.MTS_CHALLENGE, $event)">Заявить о результатах
+          </wc-mts-landing-button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="mts-open">
+    <div class="mts-open__row mts-open__row--text">
+      <div class="mts-open__col">
+        <div class="mts-open__title">
+          <wc-mts-landing-title>МТС Open</wc-mts-landing-title>
+          <div class="mts-open__star">
+            <svg-star class="mts-open__star-icon"></svg-star>
+            <div class="mts-open__star-text">550 тысяч<br>рублей</div>
+          </div>
+        </div>
+        <wc-mts-landing-text class="mts-open__text">
+          <p>
+            МТС и FIDE Online Arena готовят к запуску большой турнир МТС Open,
+            включающий серию из 6 отборочных онлайн турниров и финал.
+            К участию приглашаются все желающие: попробовать свою силу могут не только профессионалы, но и любители.
+            Общий призовой фонд составляет 550 000 рублей.
+            Участники также могут выиграть эксклюзивный мерч и официальный набор шахмат Чемпионата мира.
+          </p>
+        </wc-mts-landing-text>
+        <div class="mts-open__button">
+          <wc-mts-landing-button (click)="openPopup(MtsRequestType.MTS_OPEN, $event)">Получить уведомление
+          </wc-mts-landing-button>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

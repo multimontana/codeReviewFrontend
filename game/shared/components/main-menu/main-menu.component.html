@@ -1,0 +1,65 @@
+<div class="menu-new">
+  <div class="logo">
+    <a
+      class="logo__link"
+      [href]="getNewFrontUrl()"
+      (click)="window['dataLayerPush']('wchCross', 'Header', 'Logo', 'pic_click', '', '')"
+    >
+      <svg-logo class="logo__svg"></svg-logo>
+    </a>
+  </div>
+  <div class="menu-new-list-wrapper">
+    <ul class="menu-new-list" wcHideScrollbar>
+      <li class="menu-new-list__elem" *ngFor="let item of menu">
+        <ng-container *ngIf="!item.mainApp">
+          <a
+            class="menu-new-list__link"
+            routerLinkActive="menu-new-list__link--active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            *ngIf="!item.blank"
+            [routerLink]="item.link"
+            (click)="sendStatistics(item.gtagParams)"
+            >{{ getItem(item.title) | async }}
+            <svg-external-link class="link-external" *ngIf="item.external"></svg-external-link>
+          </a>
+          <a
+            class="menu-new-list__link"
+            routerLinkActive="menu-new-list__link--active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            *ngIf="item.blank"
+            [href]="item.link"
+            target="_blank"
+            (click)="sendStatistics(item.gtagParams)"
+            >{{ getItem(item.title) | async }}
+            <svg-external-link class="link-external" *ngIf="item.external"></svg-external-link>
+          </a>
+        </ng-container>
+        <ng-container *ngIf="item.mainApp">
+          <a
+            class="menu-new-list__link"
+            routerLinkActive="menu-new-list__link--active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            *ngIf="!item.blank"
+            [href]="paygateService.crossAppLink(false, item.link) | async"
+            (click)="sendStatistics(item.gtagParams)"
+            >{{ getItem(item.title) | async }}
+            <svg-external-link class="link-external" *ngIf="item.external"></svg-external-link>
+          </a>
+          <a
+            class="menu-new-list__link"
+            routerLinkActive="menu-new-list__link--active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            *ngIf="item.blank"
+            [href]="paygateService.crossAppLink(false, item.link) | async"
+            target="_blank"
+            (click)="sendStatistics(item.gtagParams)"
+          >
+            {{ getItem(item.title) | async }}
+            <svg-external-link class="link-external" *ngIf="item.external"></svg-external-link>
+          </a>
+        </ng-container>
+      </li>
+    </ul>
+  </div>
+</div>
+<wc-side-menu [upcomingTournaments]="myUpcomingTournaments$ | async"></wc-side-menu>

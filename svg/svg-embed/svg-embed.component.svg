@@ -1,0 +1,8 @@
+<!--<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 17.1 15">
+  <path d="M6.1 14.6L9.8 0l1.2.4L7.3 15l-1.2-.4zm-6-8.2v1.1L4.3 11l.8-1.1L1.5 7 5 4.1 4.3 3 .1 6.4zm12-2.3L15.6 7l-3.5 2.9.8 1.1 4.2-3.4V6.4L12.8 3l-.7 1.1z" />
+</svg>-->
+
+
+<svg viewBox="0 0 17.1 15" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <path class="ast0" d="M6.1 14.6L9.8 0l1.2.4L7.3 15l-1.2-.4zm-6-8.2v1.1L4.3 11l.8-1.1L1.5 7 5 4.1 4.3 3 .1 6.4zm12-2.3L15.6 7l-3.5 2.9.8 1.1 4.2-3.4V6.4L12.8 3l-.7 1.1z"></path>
+</svg>

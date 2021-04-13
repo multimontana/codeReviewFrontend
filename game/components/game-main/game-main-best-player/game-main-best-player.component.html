@@ -1,0 +1,34 @@
+<div class="root" langClass *ngIf="bestPlayer$ | async as player">
+  <div class="root__content">
+    <div class="header">
+      <svg-logo-fide-mini class="logo"></svg-logo-fide-mini>
+      <span class="title">{{ 'OTHER.BEST_TODAY' | translate}}</span>
+    </div>
+    <div class="profile-info">
+      <div class="avatar desctop">
+        <img class="avatar__img" [src]="player.profile?.avatar?.full || ''"/>
+      </div>
+      <div class="full-name"><span>{{player.profile && player.profile.full_name || 'Reef Cardenier'}}</span></div>
+      <div class="age-and-country" *ngIf="player.profile.birth_date || player.profile.country">
+        <span *ngIf="player.profile.birth_date">
+          {{(player.profile.birth_date) | age}}
+          {{ (player.profile.birth_date) ? (getTranslation((player.profile.birth_date) | age) | translate) : ''}}
+          <ng-container *ngIf="player.profile.country">, </ng-container>
+        </span>
+        <span>{{(player.profile?.country || 0) | country_code | async}}</span>
+      </div>
+    </div>
+    <div>
+      <table class="table">
+        <tr class="table-row"><td class="table-title-column">{{ 'GAME.RAPID' | translate}}</td><td class="table-value-column">{{player.worldchess_rapid}}</td></tr>
+        <tr class="table-row"><td class="table-title-column">{{ 'GAME.BLITZ' | translate}}</td><td class="table-value-column">{{player.worldchess_blitz}}</td></tr>
+        <tr class="table-row"><td class="table-title-column">{{ 'GAME.BULLET' | translate}}</td><td class="table-value-column">{{player.worldchess_bullet}}</td></tr>
+      </table>
+    </div>
+  </div>
+  <div class="root__avatar mobile">
+    <div class="avatar">
+      <img class="avatar__img" [src]="player.profile?.avatar?.full || ''"/>
+    </div>
+  </div>
+</div>

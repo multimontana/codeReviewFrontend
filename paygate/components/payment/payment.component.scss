@@ -1,0 +1,198 @@
+@import "src/html/css/variables-new";
+@import "src/html/css/media-new";
+
+.payment__input {
+  width: 100%;
+  cursor: text;
+
+  &:hover {
+    .payment__input-elem {
+      border-bottom: 1px solid #fff;
+    }
+  }
+
+  &--red {
+    .payment__input-placeholder {
+      color: $red-new !important;
+    }
+    .payment__input-elem {
+      border-bottom: 1px solid $red-new !important;
+    }
+  }
+}
+
+.payment__promocode {
+  flex: 1;
+}
+
+.payment__promocode-input {
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 10px;
+}
+
+.payment__form-row {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.payment__form-col {
+
+  display: flex;
+  align-items: flex-end;
+
+  &--width {
+    width: 55px;
+    flex: 0 0 auto;
+    margin-left: auto;
+  }
+}
+
+.payment__input-text {
+  font: 400 15px/20px $gerbera-font;
+  max-width: 416px;
+}
+
+.payment__form-wrapper {
+  flex: 0 0 auto;
+  margin-right: 30px;
+  flex: 1;
+  @include phones() {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 34px;
+  }
+}
+
+.payment__form {
+  padding: 8px 15px;
+  border: 1px solid #000000;
+  border-radius: 5px;
+  flex: 0 0 auto;
+  width: 100%;
+  margin-bottom: 10px;
+  min-height: 235px;
+  flex: 1;
+
+  @include phones() {
+    max-width: 416px;
+  }
+}
+
+.payment__body {
+  display: flex;
+  flex-direction: row;
+  flex: 0 0 auto;
+  @include phones() {
+    flex-direction: column;
+  }
+}
+
+/*-------------------*/
+.register {
+  @include phones() {
+    flex: 1 0 auto;
+  }
+}
+
+.register__footer {
+  @include phones() {
+    flex: 0 0 auto;
+  }
+}
+
+.register__title-text {
+  width: 95%;
+}
+
+
+.btn-new {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  max-width: 416px;
+  padding: 3px 24px;
+  color: #000;
+  border-radius: 3px;
+  flex: 0 0 auto;
+  font: 300 22px/22px $gerbera-font;
+  cursor: pointer;
+
+  span {
+    display: flex;
+    align-items: center;
+  }
+
+  &--apply {
+    width: 130px;
+    min-width: 130px;
+    height: 45px;
+    flex: 0 0 auto;
+    margin-left: 15px;
+    border: 1px solid rgba(#fff, 0.5);
+    background-color: transparent;
+    color: #fff;
+
+    &:hover,
+    &:active {
+      color: #000;
+      border: 1px solid #000;
+      background-color: transparent;
+    }
+
+    &.disabled,
+    &[disabled] {
+      background-color: transparent;
+      border: 1px solid #000;
+      color: #000;
+      opacity: 1;
+      cursor: default;
+    }
+
+    &.accepted {
+      color: #000;
+      border: 1px solid rgba(0,0,0,0.5);
+    }
+
+    .icon {
+      fill: #000;
+      width: 25px;
+      height: 18px;
+      margin-right: 5px;
+      flex: 0 0 auto;
+    }
+
+    svg-preloader {
+      width: 38px;
+      height: 38px;
+
+      svg {
+        width: 38px !important;
+        height: 38px !important;
+      }
+    }
+  }
+}
+
+
+wc-btn-with-loading {
+  min-width: 267px;
+  margin-right: 15px;
+  ::ng-deep {
+    .btn-new {
+      min-width: 267px;
+    }
+  }
+
+  @include phones() {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+}
+
+.toggle-label {
+  @include phones() {
+    margin-bottom: 40px;
+  }
+}

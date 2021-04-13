@@ -1,0 +1,60 @@
+<div class="popup" (click)="preventClosePopupOnOutsideClick($event)">
+  <div class="popup-controls" *ngIf="true">
+    <a (click)="closePopup()" class="close"></a>
+  </div>
+  <div class="popup__content">
+    <wc-mts-landing-text class="popup__text">
+      <p *ngIf="mtsRequestType === MtsRequestType.MTS_CHALLENGE">Мы рады, что вы решили принять участие в МТС Challenge. Пожалуйста, выполните все
+        необходимые условия для участия в конкурсе и заполните поля ниже. При выполнении всех
+        правил конкурса в течение 10 рабочих дней вам на почту придет подтверждение о присвоении
+        бесплатной годовой подписки World Chess Pro.</p>
+      <p *ngIf="mtsRequestType === MtsRequestType.MTS_OPEN">Спасибо за проявленный интерес к серии онлайн - турниров
+        МТС Open. Пожалуйста, оставьте адрес вашей электронной почты и мы пришлем вам уведомление о начале регистрации в турнире.</p>
+    </wc-mts-landing-text>
+    <form [formGroup]="mtsForm" class="popup__form" (ngSubmit)="mtsFormSubmit()">
+      <div class="popup__inputs">
+        <div class="input-text">
+          <label class="input-text__input">
+            <div class="input-text__wrapper">
+              <input
+                class="input-text__elem"
+                [class.input-text__elem--active]="!!mtsForm.controls['nickname'].value"
+                type="text"
+                formControlName="nickname"
+              />
+              <div class="input-text__placeholder">Ваш никнейм...</div>
+            </div>
+            <div *ngIf="mtsForm.controls['nickname'].errors && mtsForm.controls['nickname'].dirty" class="input-text__error">
+              <div [hidden]="!mtsForm.controls['nickname'].errors['required']">Требуется никнейм.</div>
+            </div>
+          </label>
+        </div>
+        <div class="input-text">
+          <label class="input-text__input">
+            <div class="input-text__wrapper">
+              <input
+                class="input-text__elem"
+                [class.input-text__elem--active]="!!mtsForm.controls['email'].value"
+                type="email"
+                formControlName="email"
+              />
+              <div class="input-text__placeholder">Ваш email...</div>
+            </div>
+            <div *ngIf="mtsForm.controls['email'].errors && mtsForm.controls['email'].dirty" class="input-text__error">
+              <div [hidden]="!mtsForm.controls['email'].errors['required']">Требуется email.</div>
+              <div [hidden]="!mtsForm.controls['email'].errors['email']">Некорректный email.</div>
+            </div>
+          </label>
+        </div>
+      </div>
+      <wc-mts-landing-button>
+        <ng-container *ngIf="mtsRequestType === MtsRequestType.MTS_CHALLENGE">
+          Заявить о результатах
+        </ng-container>
+        <ng-container *ngIf="mtsRequestType === MtsRequestType.MTS_OPEN">
+          Получить уведомление
+        </ng-container>
+      </wc-mts-landing-button>
+    </form>
+  </div>
+</div>

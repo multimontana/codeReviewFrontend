@@ -1,0 +1,18 @@
+@import 'variables';
+@import 'media';
+
+.title {
+  color: $white;
+  font: 300 30px/36px $gerbera-font;
+  letter-spacing: -0.3px;
+
+  @include tablets {
+    font: 300 22px/30px $gerbera-font;
+  }
+}
+
+::ng-deep {
+  .title__nowrap {
+    white-space: nowrap;
+  }
+}

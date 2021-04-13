@@ -1,0 +1,91 @@
+<div class="register__options-control register__options-control--label"
+       [class.register__options-control--disabled]="proPurchased">
+  <div class="register__img" [class.hide-image]="showProFeatures">
+    <div class="register__img-wrapper">
+      <img src="assets/images/image.jpg" alt="image.jpg">
+    </div>
+  </div>
+  <label class="toggle-label toggle-embedded">
+    <ng-container *ngIf="proPurchased">
+      <ng-container *ngIf="proPurchased?.cancel_at_period_end; else notCanceled">
+        <div class="purchased__icon canceled-check purchased__icon--white"
+             *ngIf="!(isCancelRenewInProgress | async)">
+          <svg-applied class="icon"></svg-applied>
+      </div>
+        <svg-preloader class="preloader"
+                       *ngIf="isCancelRenewInProgress | async"></svg-preloader>
+        <span class="toggle-label__content">
+          <span>{{ 'PAYGATE.CLUB_PACKAGE' | translate }}</span>
+          <span class="toggle-label__price"
+                *ngIf="proProduct$ | async as proProduct">€<span style="font-size: 0.5em">&nbsp;</span>{{ proProduct.amount / 100 | currency: 'EUR':'':'1.0'  }}<span
+            style="font-size: 0.5em">&nbsp;</span>/<span style="font-size: 0.5em">&nbsp;</span>{{ 'TIME.YEAR' | translate }}</span>
+        </span>
+      </ng-container>
+      <ng-template #notCanceled>
+        <div class="purchased__icon"
+             *ngIf="!(isCancelRenewInProgress | async)">
+          <svg-applied class="icon"></svg-applied>
+        </div>
+        <svg-preloader class="preloader"
+                       *ngIf="isCancelRenewInProgress | async"></svg-preloader>
+        <span class="toggle-label__content">
+          <span>{{ 'PAYGATE.CLUB_PACKAGE' | translate }}</span>
+          <span class="toggle-label__price"
+                *ngIf="proProduct$ | async as proProduct">€<span style="font-size: 0.5em">&nbsp;</span>{{ proProduct.amount / 100 | currency: 'EUR':'':'1.0'  }}<span
+            style="font-size: 0.5em">&nbsp;</span>/<span style="font-size: 0.5em">&nbsp;</span>{{ 'TIME.YEAR' | translate }}</span>
+        </span>
+      </ng-template>
+    </ng-container>
+    <ng-container *ngIf="!proPurchased">
+      <input type="checkbox" [checked]="proSelected$ | async" (change)="onProSelectionChanged($event)">
+      <div class="toggle-label__btn"></div>
+      <span class="toggle-label__content">
+        <span>{{ 'PAYGATE.CLUB_PACKAGE' | translate }}</span>
+        <span class="toggle-label__price"
+              *ngIf="proProduct$ | async as proProduct">€<span style="font-size: 0.5em">&nbsp;</span>{{ proProduct.amount / 100 | currency: 'EUR':'':'1.0'  }}<span
+          style="font-size: 0.5em">&nbsp;</span>/<span style="font-size: 0.5em">&nbsp;</span>{{ 'TIME.YEAR' | translate }}</span>
+      </span>
+    </ng-container>
+  </label>
+</div>
+
+
+<div class="register__options-control">
+  <div class="register__options-text" *ngIf="!showProFeatures">
+    <span>
+      <ng-container *ngIf="proPurchased?.cancel_at_period_end; else notCanceled">
+      <span class="status-subtitle">Will freeze on {{ nextPaymentTitle$ | async }} &nbsp;</span>
+      <a (click)="resubscribe()" class="resubscribe">Resubscribe&nbsp;</a>
+      <br class="mobile-none">
+        <ul>
+          <li>{{ 'PAYGATE.CLUB_WC' | translate }}</li>
+        </ul>
+    </ng-container>
+      <ng-template #notCanceled>
+        <ng-container *ngIf="proPurchased?.status === 'active'">
+          <span class="status-subtitle">Next payment: {{ nextPaymentTitle$ | async }} &nbsp;</span>
+          <a (click)="cancelSubscription()" class="cancel-subscription">{{ 'BUTTONS.CANCEL' | translate }}</a>
+          <br class="mobile-none">
+          <ul>
+            <li>{{ 'PAYGATE.CLUB_WC' | translate }}</li>
+          </ul>
+        </ng-container>
+      </ng-template>
+    </span>
+    <div class="register__options-text"
+         *ngIf="!(proPurchased$ | async)">
+      <ul>
+        <li>{{ 'PAYGATE.CLUB_WC' | translate }}</li>
+      </ul>
+    </div>
+  </div>
+  <div class="register__options-text" *ngIf="showProFeatures">
+    <ul>
+      <li>{{ 'PAYGATE.CLUB_WC' | translate }}</li>
+      <li>{{ 'PAYGATE.DISCOUNT' | translate }}</li>
+      <li>{{ 'PAYGATE.PROFILE_ANALYSIS' | translate }}</li>
+    </ul>
+  </div>
+  <a (click)="toggleProFeatures()"
+     class="register__options-link">{{ ( showProFeatures ? 'PAYGATE.SHOW_LESS' : 'PAYGATE.SHOW_ALL' ) | translate }}</a>
+</div>

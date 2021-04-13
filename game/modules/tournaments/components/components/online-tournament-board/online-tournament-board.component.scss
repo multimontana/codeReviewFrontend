@@ -1,0 +1,286 @@
+@import 'src/html/css/variables-new';
+@import 'src/html/css/media-new';
+
+.online-tournament-rounds {
+  color: #fff;
+  fill: #fff;
+  margin-bottom: 40px;
+}
+
+.online-tournament-rounds__list {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: -20px;
+
+  &--shadow {
+    &:after {
+      content: '';
+      position: absolute;
+      bottom: 20px;
+      left: 0;
+      right: 0;
+      display: block;
+      height: 27px;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.4) 0%, #000000 100%);
+    }
+  }
+}
+
+.online-tournament-rounds__elem {
+  display: flex;
+  position: relative;
+  width: 226px;
+  padding-bottom: 20px;
+  padding-right: 40px;
+  cursor: pointer;
+
+ &.active,
+ &:hover {
+  .online-tournament-rounds__order {
+    border: 1px solid rgba(#fff, 1);
+    color: rgba(#fff, 1);
+
+    &:after {
+      color: rgba(#fff, 1);
+    }
+  }
+ }
+
+}
+
+.online-tournament-rounds__elem-wrapper {
+  display: flex;
+}
+
+.online-tournament-rounds__drop-widget {
+  position: absolute;
+  top: -5px;
+  left: 0;
+  width: 100%;
+  background-color: $grey-dark-new;
+  border-radius: 4px;
+  padding: 2px;
+  z-index: z-index(base);
+  box-shadow: 0px 10px 5px 0px rgba(0,0,0,0.6);
+
+  &--players {
+    left: 54px;
+    width: 164px;
+  }
+
+  ::ng-deep {
+
+    .player {
+      padding: 4px 9px;
+      height: auto;
+    }
+
+    .player__photo,
+    .player__time,
+    .player__position {
+      display: none;
+    }
+
+    .player__name {
+      font: 300 15px/20px $gerbera-font;
+      color: $brown-2;
+    }
+
+    .player__count-wrapper {
+      font: 300 15px/20px $gerbera-font;
+      color: rgba(#fff, 0.4);
+    }
+  }
+}
+
+.online-tournament-rounds__order {
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+  flex: 0 0 auto;
+  width: 44px;
+  height: 32px;
+  margin-right: 2px;
+  border: 1px solid rgba(#fff, 0.4);
+  border-radius: 3px;
+  font: 300 28px/28px $gerbera-font;
+  padding: 1px 4px;
+  text-align: end;
+  color: rgba(#fff, 0.4);
+
+  &:after {
+    content: '#';
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: -5px;
+    left: -5px;
+    width: 10px;
+    height: 10px;
+    padding: 3px;
+    background-color: #000;
+    color: rgba(#fff, 0.4);
+    font: 300 14px/20px $gerbera-font;
+  }
+}
+
+.online-tournament-rounds__players {
+  flex: 1 1 auto;
+}
+
+.online-tournament-rounds__player {
+  display: flex;
+}
+
+.online-tournament-rounds__name {
+  flex: 1 1 auto;
+  display: block;
+  padding: 3px 3px 3px 5px;
+  margin: 0 5px 0 4px;
+  position: relative;
+  top: -3px;
+  font: 300 14px/11px $gerbera-font;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 104px;
+  height: 20px;
+  border-radius: 4px;
+
+  &.active {
+    background-color: #2A2A2A;
+  }
+
+  &--bottom {
+    top: auto;
+    bottom: 4px;
+  }
+}
+
+.online-tournament-rounds__result {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  width: 30px;
+  position: relative;
+  top: -7px;
+  flex: 0 0 auto;
+  text-align: end;
+  font: 300 14px/15px $gerbera-font;
+
+  &--zero {
+    color: rgba(#fff, 0.4);
+  }
+
+  &--half {
+    position: relative;
+    top: 0;
+    width: 10px;
+    height: 11px;
+    font: 300 7px/7px $gerbera-font;
+
+    &:after {
+      content: '';
+      position: absolute;
+      display: block;
+      width: 12px;
+      height: 1px;
+      background-color: #fff;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(-50deg);
+    }
+
+    span {
+      &:first-child {
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+      &:last-child {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+      }
+    }
+  }
+
+  &--bottom {
+    top: auto;
+    bottom: 5px;
+  }
+}
+
+.online-tournament-rounds__move {
+  display: flex;
+  align-items: flex-end;
+  font: 300 12px/12px $gerbera-font;
+}
+
+
+
+.online-tournament-rounds__move-icon {
+  display: block;
+  width: 9px;
+  height: 9px;
+  fill: #fff;
+  margin-right: 3px;
+
+  ::ng-deep {
+    svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+.standings-table__buttons-block {
+  display: flex;
+  padding-top: 5px;
+}
+
+.standings-table__button {
+  display: flex;
+  align-items: center;
+  color: $brown-2;
+  fill: $brown-2;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 20px;
+  position: relative;
+  background: none;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  padding: 2px 5px 2px 0;
+
+  &:hover {
+    color: $brown-2-hover;
+    fill: $brown-2-hover;
+  }
+
+  .icon {
+    position: relative;
+    top: -2px;
+    display: block;
+    width: 12px;
+    height: 12px;
+    margin-left: 6px;
+  }
+}
+
+.standings-table__button-text {
+  display: inline-flex;
+}
+
+
+/*---------локализация--------------*/
+
+.lang-ru  {
+  .standings-table__button-text {
+    flex-direction: row-reverse;
+  }
+}
